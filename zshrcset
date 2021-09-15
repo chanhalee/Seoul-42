@@ -1,0 +1,9 @@
+alias oz="open ~/.zshrc"
+alias sz="source ~/.zshrc"
+alias ll="lsd -l --no-symlink"
+alias lt="lsd --tree --no-symlink"
+alias norm="norminette -R CheckForbiddenSourceHeader"
+alias testm="gcc -Wall -Wextra -Werror -o test ~/projectsHome/main.c "
+alias testa="gcc -Wall -Wextra -Werror -o test ~/projectsHome/main.c *.c ; ./test; rm test"
+alias norma='find . -name "ft_*.c" -exec basename {} \; | norm'
+export MAIL=chanhale@student.42seoul.kr
