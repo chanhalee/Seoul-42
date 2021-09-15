@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chahale <chahale@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 02:27:18 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/15 15:06:57 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/15 19:05:41 by chahale           #+#    #+#             */
+/*   Updated: 2021/09/15 19:07:00 by chahale          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+char	*ft_strlowcase(char	*str)
 {
-	int	temp;
+	int		temp;
+	char	c;
 
 	temp = 0;
 	while (str[temp] != '\0')
 	{
+		c = str[temp];
+		if ((c >= 65 && c <= 90))
+		{
+			str[temp] += 32;
+		}
 		temp++;
 	}
-	return (temp);
+	return (str);
 }

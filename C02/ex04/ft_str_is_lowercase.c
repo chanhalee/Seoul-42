@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chahale <chahale@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 02:27:18 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/15 15:06:57 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/15 18:30:46 by chahale           #+#    #+#             */
+/*   Updated: 2021/09/15 18:35:16 by chahale          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_str_is_lowercase(char *str)
 {
-	int	temp;
+	int		temp;
+	char	c;
 
 	temp = 0;
 	while (str[temp] != '\0')
 	{
+		c = str[temp];
+		if ((c < 97 || c > 122))
+		{
+			return (0);
+		}
 		temp++;
 	}
-	return (temp);
+	return (1);
 }
