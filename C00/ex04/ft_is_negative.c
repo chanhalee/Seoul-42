@@ -6,11 +6,12 @@
 /*   By: chanhale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:11:39 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/14 17:23:14 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/16 04:03:53 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 void	ft_is_negative(int n)
 {
 	if (n >= 0)

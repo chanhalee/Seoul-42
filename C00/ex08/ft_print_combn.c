@@ -6,32 +6,32 @@
 /*   By: chanhale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:31:51 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/16 00:41:44 by chahale          ###   ########.fr       */
+/*   Updated: 2021/09/16 03:37:46 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 char	*subfunc(char *prev_arr, int num, int changenum);
 
 void	ft_print_combn(int n)
 {
 	char	*result;
-	int		tempA;
+	int		tempa;
 	char	arr[9];
 
-	tempA = -1;
-	while (tempA++ != n - 1)
+	tempa = -1;
+	while (tempa++ != n - 1)
 	{
-		arr[tempA] = tempA + 48;
+		arr[tempa] = tempa + 48;
 	}
 	result = arr;
-	write (1, result, n);
-	tempA = 0;
+	tempa = 0;
 	while (arr[0] != '!')
 	{
-		if (tempA != 0)
+		if (tempa == 0)
 		{
-			tempA++;
+			tempa++;
 		}
 		else
 		{

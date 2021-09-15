@@ -6,14 +6,14 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:10:21 by lch               #+#    #+#             */
-/*   Updated: 2021/09/16 02:29:02 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/16 03:55:25 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 
-void ft_putnbr(int nb);
+void ft_putnbr(int n);
 void makestring(char* str, char *d);
 int	main(void)
 {
@@ -30,7 +30,7 @@ int	main(void)
 	//d[2] = '\n';
 	//d[10] = '\n';
 	//printf("%s \n", d);
-	ft_putnbr(1000012);
+	ft_putnbr(-32111);
 	return 0;
 }
 void makestring(char* str, char *d){
