@@ -6,11 +6,13 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:26:01 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/15 00:49:06 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/16 02:19:29 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	subfunc(int i, int j, int k);
 
 void	ft_print_comb(void)
 {
@@ -33,6 +35,7 @@ void	ft_print_comb(void)
 				{
 					write(1, ",  ", 2);
 				}
+				subfunc(i, j, k);
 				flag++;
 			}
 		}

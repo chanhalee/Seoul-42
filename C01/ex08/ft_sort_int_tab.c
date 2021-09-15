@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 15:35:17 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/16 00:40:08 by chahale          ###   ########.fr       */
+/*   Updated: 2021/09/16 02:38:47 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_sort_int_tab(int *tab, int size)
 		temp2 = temp1 + 1;
 		while (temp2 < size)
 		{
-			if (tab[temp2] > tab[temp1])
+			if (tab[temp2] < tab[temp1])
 			{
 				temp3 = tab[temp1];
 				tab[temp1] = tab[temp2];
