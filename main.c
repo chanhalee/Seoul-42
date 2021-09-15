@@ -1,50 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 17:26:01 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/15 00:49:06 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/14 23:10:21 by lch               #+#    #+#             */
+/*   Updated: 2021/09/15 11:34:20 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-void	ft_print_comb(void)
+void	ft_putchar(char *str);
+int	main(void)
 {
-	int		i;
-	int		j;
-	int		k;
-	int		flag;
-
-	flag = 0;
-	i = -1;
-	while (i++ < 9)
-	{
-		j = i;
-		while (j++ < 9)
-		{
-			k = j;
-			while (k++ < 9)
-			{
-				if (flag != 0)
-				{
-					write(1, ",  ", 2);
-				}
-				flag++;
-			}
-		}
-	}
-}
-
-void	subfunc(int i, int j, int k)
-{
-	char	num[3];
-
-	num[0] = i + 48;
-	num[1] = j + 48;
-	num[2] = k + 48;
-	write(1, num, 3);
+	int a, b;
+	a = 202;
+	b = 10;
+	ft_putchar("adasad");
+	printf("%s, %d", , b);
+	return 0;
 }

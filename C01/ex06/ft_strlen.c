@@ -1,50 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 17:26:01 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/15 00:49:06 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/15 02:27:18 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/15 11:34:38 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print_comb(void)
+int	ft_strlen(char *str)
 {
-	int		i;
-	int		j;
-	int		k;
-	int		flag;
+	int	temp;
 
-	flag = 0;
-	i = -1;
-	while (i++ < 9)
+	temp = 0;
+	while (str[temp] != 0)
 	{
-		j = i;
-		while (j++ < 9)
-		{
-			k = j;
-			while (k++ < 9)
-			{
-				if (flag != 0)
-				{
-					write(1, ",  ", 2);
-				}
-				flag++;
-			}
-		}
+		temp++;
 	}
-}
-
-void	subfunc(int i, int j, int k)
-{
-	char	num[3];
-
-	num[0] = i + 48;
-	num[1] = j + 48;
-	num[2] = k + 48;
-	write(1, num, 3);
+	return (temp);
 }
