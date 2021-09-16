@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 11:54:32 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/16 11:54:37 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/16 16:15:32 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/16 16:53:31 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print_alphabet(void)
+char	*ft_strcat(char *dest, char *src)
 {
-	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+	int	destlength;
+	int	srclength;
+
+	srclength = 0;
+	destlength = 0;
+	while (dest[destlength] != '\0')
+		destlength++;
+	dest[destlength] = 48;
+	while (src[srclength] != '\0')
+	{
+		dest[destlength + srclength] = src[srclength];
+		srclength++;
+	}
+	dest[destlength + srclength] = '\0';
+	return (dest);
 }
