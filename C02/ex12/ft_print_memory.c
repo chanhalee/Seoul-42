@@ -6,12 +6,11 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 21:51:55 by chahale           #+#    #+#             */
-/*   Updated: 2021/09/16 00:33:19 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/16 20:30:50 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	*ft_print_memory(void *addr, unsigned int size);
 void	parsenprintaddress(unsigned long addr);
@@ -22,7 +21,6 @@ char	parsehexa(int num);
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	char	*data;
-	int		temp1;
 
 	data = (char *)addr;
 	while (size >= 16)
@@ -63,7 +61,6 @@ void	parsenprintaddress(unsigned long addr)
 void	printrest(char	*addr, int size)
 {
 	int		temp1;
-	char	data;
 
 	temp1 = 0;
 	while (temp1 < size - 1)

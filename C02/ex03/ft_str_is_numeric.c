@@ -6,7 +6,7 @@
 /*   By: chahale <chahale@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:23:46 by chahale           #+#    #+#             */
-/*   Updated: 2021/09/15 18:29:46 by chahale          ###   ########.fr       */
+/*   Updated: 2021/09/16 17:46:50 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_str_is_numeric(char	*str)
 	while (str[temp] != '\0')
 	{
 		c = str[temp];
-		if ((c < 48 || c > 58))
+		if ((c < 48 || c > 57))
 		{
 			return (0);
 		}

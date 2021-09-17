@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 13:58:55 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/16 02:11:18 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/16 11:55:15 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/16 11:55:18 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_print_numbers(void)

@@ -6,12 +6,13 @@
 /*   By: chahale <chahale@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:09:12 by chahale           #+#    #+#             */
-/*   Updated: 2021/09/15 19:42:46 by chahale          ###   ########.fr       */
+/*   Updated: 2021/09/16 20:21:59 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	makelow(char	*str, int index);
 void	makeup(char	*str, int index);
+int		checkalphanum(char c);
 
 char	*ft_strcapitalize(char *str)
 {
@@ -25,17 +26,17 @@ char	*ft_strcapitalize(char *str)
 		if (flag)
 		{
 			makeup (str, temp);
-			temp++;
 			flag = 0;
+			if (checkalphanum(str[temp++]))
+				flag = 1;
 			continue ;
 		}
-		if (str[temp] == 32)
+		if (checkalphanum(str[temp++]))
 		{
 			flag = 1;
-			temp++;
 			continue ;
 		}
-		makelow (str, temp);
+		makelow (str, --temp);
 		temp++;
 	}
 	return (str);
@@ -55,4 +56,13 @@ void	makeup(char	*str, int index)
 	{
 		str[index] -= 32;
 	}
+}
+
+int	checkalphanum(char c)
+{
+	if (c < 'a' || c > 'z')
+		if (c < 'A' || c > 'Z')
+			if (c < '0' || c > '9')
+				return (1);
+	return (0);
 }

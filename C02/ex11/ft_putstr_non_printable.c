@@ -6,7 +6,7 @@
 /*   By: chahale <chahale@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 20:42:24 by chahale           #+#    #+#             */
-/*   Updated: 2021/09/15 21:44:58 by chahale          ###   ########.fr       */
+/*   Updated: 2021/09/16 17:38:00 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ void	ft_putstr_non_printable(char *str)
 
 void	parse(char c, char	*result)
 {
+	unsigned char	cu;
+
+	cu = (unsigned char)c;
 	result[0] = '\\';
-	if (c / 16 < 10)
-		result[1] = 48 + c / 16;
+	if (cu / 16 < 10)
+		result[1] = 48 + cu / 16;
 	else
-		result[1] = 55 + c / 16;
-	if (c % 16 < 10)
-		result[2] = 48 + c % 16;
+		result[1] = 55 + cu / 16;
+	if (cu % 16 < 10)
+		result[2] = 48 + cu % 16;
 	else
-		result[2] = 55 + c % 16;
+		result[2] = 55 + cu % 16;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 13:50:19 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/16 04:03:08 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/16 11:54:53 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/16 11:54:56 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
