@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:08:45 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/16 15:24:44 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/19 19:54:40 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	t2 = 0;
 	while (s1[tempint1] != '\0')
 		tempint1++;
-	while (t2 < tempint1 && t2 < n-1)
+	while (t2 < tempint1 && t2 < n - 1)
 	{
 		if (s1[t2] != s2[t2])
 			break ;
