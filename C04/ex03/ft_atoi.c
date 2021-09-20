@@ -6,18 +6,18 @@
 /*   By: chanhale <chanhale@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 20:27:41 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/19 21:27:15 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/21 02:59:08 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *removespace(char *s)
+char	*removespace(char *s)
 {
 	int	c;
 
 	c = 0;
-	while((s[c] == '\t' || s[c] == '\n' || s[c] == '\v'
+	while ((s[c] == '\t' || s[c] == '\n' || s[c] == '\v'
 			|| s[c] == '\f' || s[c] == '\r' || s[c] == ' ')
-			&& s[c] != '\0')
+		&& s[c] != '\0')
 		c++;
 	return (s + c);
 }
@@ -36,12 +36,12 @@ int	ft_atoi(char *str)
 			|| str[counter] == '+'))
 		if (str[counter++] == '-')
 			minuscounter++;
-	if(minuscounter % 2 == 1)
+	if (minuscounter % 2 == 1)
 		minuscounter = -1;
 	else
 		minuscounter = 1;
 	while (str[counter] != '\0' && str[counter] >= '0'
-			&& str[counter] <= '9')
+		&& str[counter] <= '9')
 	{
 		result *= 10;
 		result = result + (str[counter] - '0') * minuscounter;
