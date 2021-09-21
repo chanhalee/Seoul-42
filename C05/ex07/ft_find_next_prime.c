@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:42:31 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/21 21:56:15 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/22 01:15:59 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@ int	ft_sqrt(int nb);
 
 int	ft_is_prime(int nb)
 {
-	int rt;
-	int divider;
+	int	rt;
+	int	divider;
+
 	if (nb < 2)
 		return (0);
 	rt = ft_sqrt(nb);
@@ -27,24 +28,21 @@ int	ft_is_prime(int nb)
 	return (0);
 }
 
-
-
-
-int ft_sqrt(int nb)
+int	ft_sqrt(int nb)
 {
 	int	i;
 	int	base;
 
 	i = 1;
 	if (nb < 0)
-		return 0;
+		return (0);
 	while (nb > 1000000 * i * i && i < 47)
 		i++;
 	base = (i - 1) * 1000 - 1;
-	if(base == 45999)
+	if (base == 45999)
 	{
 		while (++base <= 46340)
-			if(nb < base * base)
+			if (nb < base * base)
 				return (base);
 		return (46340);
 	}
@@ -54,10 +52,10 @@ int ft_sqrt(int nb)
 	return (46340);
 }
 
-int ft_find_next_prime(int nb)
+int	ft_find_next_prime(int nb)
 {
 	if (nb <= 2)
-		return 2;
+		return (2);
 	while (ft_is_prime(nb) == 0 && nb < 2147483647)
 		nb++;
 	return (nb);
