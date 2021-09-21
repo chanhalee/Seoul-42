@@ -6,7 +6,7 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 02:20:50 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/21 00:12:36 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:58:06 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ft_putnbr(int nb)
 	{
 		write(1, "-", 1);
 		c = 48 + (nb % 10) * -1;
-		ft_putnbr((nb / 10) * -1);
+		if ((nb / 10) * -1 > 0)
+			ft_putnbr((nb / 10) * -1);
 		write(1, &c, 1);
 	}
 	else

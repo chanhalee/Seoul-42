@@ -6,7 +6,7 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 00:18:19 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/21 02:01:57 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/21 10:49:39 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	iterator(int i, int n, char *base)
 	if (i < 0)
 	{
 		write(1, "-", 1);
-		c = base[(i % n) * -1];
+		c = base[((i % n) * -1)];
 		if ((i / n) * -1 > 0)
 			iterator((i / n) * -1, n, base);
 		write(1, &c, 1);
