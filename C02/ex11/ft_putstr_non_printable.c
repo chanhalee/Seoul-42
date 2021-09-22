@@ -6,7 +6,7 @@
 /*   By: chahale <chahale@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 20:42:24 by chahale           #+#    #+#             */
-/*   Updated: 2021/09/16 17:38:00 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/19 15:13:13 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	parse(char c, char	*result)
 	if (cu / 16 < 10)
 		result[1] = 48 + cu / 16;
 	else
-		result[1] = 55 + cu / 16;
+		result[1] = 87 + cu / 16;
 	if (cu % 16 < 10)
 		result[2] = 48 + cu % 16;
 	else
-		result[2] = 55 + cu % 16;
+		result[2] = 87 + cu % 16;
 }
