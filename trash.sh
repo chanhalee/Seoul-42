@@ -1,0 +1,9 @@
+rm .DS_Store
+rm */.DS_Store
+rm */*/.DS_Store
+rm a.out
+rm */a.out
+rm */*/a.out
+rm *.swp
+rm */*.swp
+rm */*/*.swp
