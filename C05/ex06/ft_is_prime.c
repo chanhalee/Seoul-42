@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:29:38 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/21 21:55:38 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/23 02:56:43 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_is_prime(int nb)
 
 	if (nb < 2)
 		return (0);
+	if (nb == 2)
+		return (1);
 	rt = ft_sqrt(nb);
 	divider = 2;
 	while (nb % divider && divider <= rt)

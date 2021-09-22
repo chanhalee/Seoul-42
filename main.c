@@ -26,19 +26,24 @@ void makestring(char* str, char *d);
 //--
 //C04
 //void ft_putstr(char *str);
-void ft_putnbr(int nb);
+//void ft_putnbr(int nb);
 //int ft_atoi(char *str);
 //void ft_putnbr_base(int nbr, char *base);
 //int ft_atoi_base(char *str, char *base);
-int ft_ten_queens_puzzle(void);
+//C05
+int ft_iterative_factorial(int nb);
+//int ft_ten_queens_puzzle(void);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+int ft_recursive_factorial(int nb);
+int ft_is_prime(int nb);
 int		main(void)
 {
-	char c[] = "thisisit";
-	char d[] = "istiads?";
-	int i = 0;
-	i = ft_strlcpy(c, d, 0);
-	printf("%d, %s", i, c);
+	int i;
+	int k = 0;
+	while(k++ < 60) {
+		i = ft_is_prime(k);
+		printf("%d: %d\n",k,  i);
+	}
 	return 0;
 }
 
