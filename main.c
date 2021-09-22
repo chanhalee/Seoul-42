@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:10:21 by lch               #+#    #+#             */
-/*   Updated: 2021/09/20 22:56:02 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/22 22:27:48 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,19 @@ void makestring(char* str, char *d);
 //--
 //C04
 //void ft_putstr(char *str);
-//void ft_putnbr(int nb);
-int ft_atoi(char *str);
+void ft_putnbr(int nb);
+//int ft_atoi(char *str);
 //void ft_putnbr_base(int nbr, char *base);
-int ft_atoi_base(char *str, char *base);
-
+//int ft_atoi_base(char *str, char *base);
+int ft_ten_queens_puzzle(void);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int		main(void)
 {
-	int i;
-	i = ft_atoi_base("	\n	-101", "01");
-	printf("%d", i);
+	char c[] = "thisisit";
+	char d[] = "istiads?";
+	int i = 0;
+	i = ft_strlcpy(c, d, 0);
+	printf("%d, %s", i, c);
 	return 0;
 }
 
@@ -48,8 +51,6 @@ void makestring(char* str, char *d){
 		temp++;
 	}
 }
-
-
 
 
 
