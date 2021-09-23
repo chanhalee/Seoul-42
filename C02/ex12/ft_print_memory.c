@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 21:51:55 by chahale           #+#    #+#             */
-/*   Updated: 2021/09/16 20:30:50 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/23 13:24:25 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ void	printrest(char	*addr, int size)
 		parsenprintchar(addr[temp1 - 2], 1);
 		write(1, "   ", 3);
 	}
+	temp1 = (16 - size) / 2;
+	while (temp1-- > 0)
+		write(1, "     ", 5);
 	temp1 = -1;
 	while (++temp1 < size)
 	{
