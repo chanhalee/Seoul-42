@@ -6,7 +6,7 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 15:15:14 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/25 17:20:43 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/25 22:12:09 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	count(int i, int n, char *base, int *result);
 void	ft_putnbr_base(int nbr, char *base_to, char **result)
 {
 	int		n;
-	int 	size;
+	int		size;
 	char	*copy;
 
 	size = 0;
@@ -30,7 +30,7 @@ void	ft_putnbr_base(int nbr, char *base_to, char **result)
 		*result = (char *)malloc(sizeof (char) * ++size);
 		copy = *result;
 		iterator(nbr, n, base_to, &copy);
-		(*result)[size-1] = '\0';
+		(*result)[size - 1] = '\0';
 	}
 }
 
@@ -54,7 +54,7 @@ void	iterator(int i, int n, char *base, char **result)
 		{
 			iterator(i / n, n, base, result);
 		}
-		**result =  *(base + i % n);
+		**result = *(base + i % n);
 		(*result)++;
 	}
 }

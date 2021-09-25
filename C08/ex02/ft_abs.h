@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_boolean.h                                       :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/25 19:17:55 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/25 22:25:57 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/25 22:27:03 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/25 22:29:38 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BOOLEAN_H
-# define FT_BOOLEAN_H
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
-# include <unistd.h>
-
-typedef int	t_bool;
-
-# define TRUE 1
-# define FALSE 0
-# define EVEN(x) (((x) % 2) == 0)
-# define EVEN_MSG "I have an even number of arguments.\n"
-# define ODD_MSG "I have an odd number of arguments.\n"
-# define SUCCESS 0
+# define ABS(value) ((value < 0) ? ((value) * -1) : (value))
 
 #endif

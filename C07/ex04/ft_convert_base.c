@@ -6,7 +6,7 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 15:07:16 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/25 17:05:45 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/25 22:13:35 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	ft_putnbr_base(int nbr, char *base, char **result);
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	char *result;
-	int temp;
-	if(!checkbase(base_from)||!checkbase(base_to))
+	char	*result;
+	int		temp;
+
+	if (!checkbase(base_from) || !checkbase(base_to))
 		return (0);
 	temp = ft_atoi_base(nbr, base_from);
 	ft_putnbr_base(temp, base_to, &result);

@@ -6,12 +6,12 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:15:05 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/25 19:15:56 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/25 22:17:36 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
-#define FT_H
+# define FT_H
 
 void	ft_putchar(char c);
 void	ft_swap(int *a, int *b);
