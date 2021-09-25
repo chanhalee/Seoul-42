@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:10:21 by lch               #+#    #+#             */
-/*   Updated: 2021/09/25 17:53:24 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/26 03:00:24 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-void makestring(char* str, char *d);
+#include "ft_stock_str.h"
 
 
 //C03
@@ -40,28 +40,14 @@ int ft_is_prime(int nb);
 char	*ft_strjoin(int size, char **strs, char *sep);
 int *ft_range(int min, int max);
 char *ft_convert_base(char *nbr, char *base_from, char *base_to);
+void				ft_show_tab(struct s_stock_str *par);
+
 int		main(void)
 {
-	char *strs[] = { "Diff", "OK", ":D", "\n", "Grade:", "100" };
-	char *ret = ft_strjoin(6, strs, ", ");
-	printf("%s\n[len=%d]\n\n", ret, (int)strlen(ret));
-	return 0;
-	system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked" );
-	while(1){}
-}
-
-void makestring(char* str, char *d){
-	int temp = 0;
+	char *av1[] = { "HelloWorld!" };
 	
-	while(str[temp] != '\0')
-	{
-		d[temp] = str[temp];
-		temp++;
-	}
+
 }
-
-
-
 
 
 

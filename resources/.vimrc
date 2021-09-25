@@ -1,6 +1,15 @@
 call plug#begin()
 Plug 'pbondoer/vim-42header'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/rainbow_parentheses.vim'
 call plug#end()
+
+nnoremap <C-n> :NERDTree<CR>
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endiflet g:rainbow#max_level = 10
+
+let g:rainbow#max_level = 10
+let g:rainbow#pairs = [['(', ')'], ['{', '}'], ['[', ']']]
 
 let g:hdr42user = 'chanhale'
 let g:hdr42mail = 'chahale@student.42seoul.kr'
