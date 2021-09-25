@@ -6,12 +6,13 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:10:21 by lch               #+#    #+#             */
-/*   Updated: 2021/09/22 22:27:48 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/25 17:53:24 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 void makestring(char* str, char *d);
 
@@ -29,22 +30,24 @@ void makestring(char* str, char *d);
 //void ft_putnbr(int nb);
 //int ft_atoi(char *str);
 //void ft_putnbr_base(int nbr, char *base);
-//int ft_atoi_base(char *str, char *base);
+int ft_atoi_base(char *str, char *base);
 //C05
 int ft_iterative_factorial(int nb);
 //int ft_ten_queens_puzzle(void);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int ft_recursive_factorial(int nb);
 int ft_is_prime(int nb);
+char	*ft_strjoin(int size, char **strs, char *sep);
+int *ft_range(int min, int max);
+char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 int		main(void)
 {
-	int i;
-	int k = 0;
-	while(k++ < 60) {
-		i = ft_is_prime(k);
-		printf("%d: %d\n",k,  i);
-	}
+	char *strs[] = { "Diff", "OK", ":D", "\n", "Grade:", "100" };
+	char *ret = ft_strjoin(6, strs, ", ");
+	printf("%s\n[len=%d]\n\n", ret, (int)strlen(ret));
 	return 0;
+	system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked" );
+	while(1){}
 }
 
 void makestring(char* str, char *d){

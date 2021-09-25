@@ -6,7 +6,7 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 00:50:34 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/25 02:41:58 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/25 17:40:43 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char *ft_strjoin(int size, char **strs, char *sep)
 
 	len = assune_len(size, strs, sep);
 	result = (char *)malloc(sizeof(char) * len);
+	result[len-1] = '\0';
 	if (size <= 0)
 		return (result);
 	len = -1;
