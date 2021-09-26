@@ -6,11 +6,11 @@
 /*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 03:04:48 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/26 03:10:59 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/26 10:41:10 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 #include "ft_stock_str.h"
 
 void	ft_putstr(char *str)
