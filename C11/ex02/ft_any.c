@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_any.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <chanhale@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/19 20:15:24 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/21 00:11:31 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/28 01:42:23 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/28 01:47:22 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	len(char *str);
-
-void	ft_putstr(char *str)
+int	ft_any(char **tab, int (*f)(char*))
 {
-	int	length;
+	int	local_index;
 
-	length = len(str);
-	write(1, str, length);
-}
-
-int	len(char *str)
-{
-	int	counter;
-
-	counter = 0;
-	while (str[counter])
-		counter++;
-	return (counter);
+	local_index = -1;
+	while (tab[++local_index] != 0)
+		if ((*f)(tab[local_index]))
+			return (1);
+	return (0);
 }

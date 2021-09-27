@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chanhale <chahale@student.42seoul.kr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 01:46:35 by chanhale          #+#    #+#             */
-/*   Updated: 2021/09/15 01:57:17 by chanhale         ###   ########.fr       */
+/*   Created: 2021/09/28 01:48:40 by chanhale          #+#    #+#             */
+/*   Updated: 2021/09/28 02:24:07 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
+int	ft_count_if(char **tab, int length, int (*f)(char*))
 {
-	int	k;
+	int	local_index;
+	int	counter;
 
-	k = *a;
-	*a = *b;
-	*b = k;
+	local_index = -1;
+	counter = 0;
+	while (++local_index < length)
+		if ((*f)(tab[local_index]))
+			counter++;
+	return (counter);
 }
