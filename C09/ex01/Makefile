@@ -11,6 +11,7 @@ all : $(TARGET)
 
 $(TARGET) : $(OBJS)
 	ar rcs $(TARGET) $(OBJS)
+	ranlib $(TARGET)
 
 srcs/ft_putchar.o : srcs/ft_putchar.c
 	$(CC) $(FLAGS) -c -I includes -o srcs/ft_putchar.o srcs/ft_putchar.c
