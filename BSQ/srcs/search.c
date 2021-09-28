@@ -22,7 +22,15 @@ void	search(t_map *map)
 	index_x = -1;
 	index_y = -1;
 	prev_line = (int *)malloc(sizeof (int) * (map->size_row + 1));
+	if (prev_line == NULL)
+		fail(1, map);
 	current_line = (int *)malloc(sizeof (int) * (map->size_row + 1));
+	if (current_line == NULL)
+	{
+		if (prev_line != NULL)
+			free(prev_line);
+		fail(1, map);
+	}
 	map->front_line = map->obstacle_head->next;
 	while (++index_x < map->size_row)
 		prev_line[index_x] = 0;

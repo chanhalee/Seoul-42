@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_result.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/28 17:19:35 by yeoyoon           #+#    #+#             */
+/*   Updated: 2021/09/28 17:19:36 by yeoyoon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "my_struct.h"
 
 void	print(t_map *map)
@@ -5,13 +17,11 @@ void	print(t_map *map)
 	int	x_s;
 	int	x_e;
 	int	y_s;
-	int	y_e;
 
 	map->front_line = map->obstacle_head->next;
 	x_s = map->square.location.row - map->square.size + 1;
 	x_e = map->square.location.row;
 	y_s = map->square.location.col - map->square.size + 1;
-	y_e = map->square.location.col;
 	print_inner(map, x_s, x_e, y_s);
 }
 

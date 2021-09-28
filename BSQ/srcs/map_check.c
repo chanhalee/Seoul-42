@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/28 17:19:27 by yeoyoon           #+#    #+#             */
+/*   Updated: 2021/09/28 17:19:28 by yeoyoon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "my_struct.h"
 
 static int	g_x_check;
@@ -43,7 +55,7 @@ int	check_line(int fd, t_map *map, int y_counter)
 int	check_char(char c, t_map *map, int x_counter, int y_counter)
 {
 	if (c == (map -> obstacle_c))
-		save_obstacle(&(map -> front_line), x_counter, y_counter);
+		save_obstacle(&(map -> front_line), x_counter, y_counter, map);
 	if (c == (map -> empty_c) || c == (map -> obstacle_c))
 		x_counter++;
 	else
