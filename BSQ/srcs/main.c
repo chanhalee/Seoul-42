@@ -1,19 +1,19 @@
-#include "library/my_struct.h"
-#include <stdio.h>
-
+#include "my_struct.h"
 
 int main(int argc, char **argv) {
 	t_map	*map;
+	int	loop;
 
-	map_init(&map);
-
-	check_file(argv[1], map);
-
-	open_file(argv[1], map);
-	search(map);
-	printf("col: %d, row:  %d, square: %d, x: %d, y: %d\n",map->size_col,
-		   map->size_row, map->square.size, map->square.location.row,  map->square.location.col);
-	print(map);
+	loop = 0;
+	while (++loop < argc)
+	{
+		map_init(&map);
+		if (check_file(argv[loop], map))
+		{
+			search(map);
+			print(map);
+		}
+	}
 	return 0;
 }
 

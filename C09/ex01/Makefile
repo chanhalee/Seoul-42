@@ -31,7 +31,7 @@ srcs/ft_strcmp.o : srcs/ft_strcmp.c
 clean :
 	rm -rf $(OBJS)
 
-fclean :
+fclean : clean
 	rm -rf $(TARGET)
 
 re : fclean all
