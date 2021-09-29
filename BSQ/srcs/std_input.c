@@ -6,7 +6,7 @@
 /*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:19:43 by yeoyoon           #+#    #+#             */
-/*   Updated: 2021/09/28 17:19:56 by yeoyoon          ###   ########.fr       */
+/*   Updated: 2021/09/29 14:49:03 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int	std_in_arg(t_map **map)
 	}
 	search(*map);
 	print(*map);
+	mem_free(*map);
+	*map = NULL;
 	return (1);
 }

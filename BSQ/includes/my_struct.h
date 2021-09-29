@@ -6,7 +6,7 @@
 /*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:20:08 by yeoyoon           #+#    #+#             */
-/*   Updated: 2021/09/28 17:20:11 by yeoyoon          ###   ########.fr       */
+/*   Updated: 2021/09/29 15:03:03 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ typedef struct s_map
 	t_dot		*front_line;
 }	t_map;
 
-# define TRUE (1)
-# define FALSE (0)
-# define ERR (-1)
-
 int		save_first(int fd, t_map *map);
 int		read_first(int fd, char *buf);
 int		check_file(char *file_name, t_map *map);
@@ -68,4 +64,4 @@ void	print_inner(t_map *map, int xs, int xe, int ys);
 void	mem_free(t_map *map);
 void	fail(int exit_code, t_map *map);
 
-#endif //MY_STRUCT_H
+#endif 

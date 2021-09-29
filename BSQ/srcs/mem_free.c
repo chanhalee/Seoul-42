@@ -6,7 +6,7 @@
 /*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:19:31 by yeoyoon           #+#    #+#             */
-/*   Updated: 2021/09/28 17:19:32 by yeoyoon          ###   ########.fr       */
+/*   Updated: 2021/09/29 14:49:10 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	mem_free(t_map *map)
 void	fail(int exit_code, t_map *map)
 {
 	mem_free(map);
+	map = NULL;
 	exit(exit_code);
 }

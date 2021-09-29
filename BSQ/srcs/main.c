@@ -6,7 +6,7 @@
 /*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:19:22 by yeoyoon           #+#    #+#             */
-/*   Updated: 2021/09/28 17:19:23 by yeoyoon          ###   ########.fr       */
+/*   Updated: 2021/09/29 15:36:08 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	else
 		std_in_arg(&map);
 	mem_free(map);
+	map = NULL;
 	return (0);
 }
 
@@ -38,12 +39,18 @@ void	got_arg(int loop, t_map **map, char **argv)
 		search(*map);
 		print(*map);
 	}
+	mem_free(*map);
+	*map = NULL;
 }
 
 void	map_init(t_map **map)
 {
 	(*map) = (t_map *)malloc(sizeof (t_map));
+	if ((*map) == NULL)
+		fail(1, *map);
 	(*map)->obstacle_head = (t_dot *)malloc(sizeof (t_dot));
+	if ((*map)->obstacle_head == NULL)
+		fail(1, *map);
 	(*map)->front_line = (*map)->obstacle_head;
 	(*map)->square.size = 0;
 	(*map)->square.location.row = 0;
