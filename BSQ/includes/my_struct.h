@@ -56,7 +56,7 @@ void	map_init(t_map **map);
 void	save_obstacle(t_dot **front_line, int row, int col, t_map *map);
 void	search(t_map *map);
 void	search_sub(int *prev_line, int *current_line, t_map *map, int index_y);
-void	search_switch(int *curr, int *prev, int size); ///*
+void	search_switch(int *curr, int *prev, int size);
 int		search_merge(int *prev_line, int *current_line, int index_x);
 void	search_sizeup(t_square *old, int new_size, int new_x, int new_y);
 void	print(t_map *map);

@@ -16,11 +16,9 @@ void	search(t_map *map)
 {
 	int			*prev_line;
 	int			*current_line;
-	int			index_y;
 	int			index_x;
 
 	index_x = -1;
-	index_y = -1;
 	prev_line = (int *)malloc(sizeof (int) * (map->size_row + 1));
 	if (prev_line == NULL)
 		fail(1, map);
@@ -48,11 +46,11 @@ void	search_sub(int *p_line, int *c_line, t_map *map, int idx_y)
 		idx_x = -1;
 		while (++idx_x < map->size_row)
 		{
-			if (map->front_line->row == idx_x && map->front_line->col == idx_y)
+			if (map->front_line != NULL && map->front_line->row == idx_x
+				&& map->front_line->col == idx_y)
 			{
 				c_line[idx_x] = 0;
-				if (map->front_line->next != NULL)
-					map->front_line = map->front_line->next;
+				map->front_line = map->front_line->next;
 			}
 			else
 			{

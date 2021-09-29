@@ -51,6 +51,7 @@ void	map_init(t_map **map)
 	(*map)->obstacle_head = (t_dot *)malloc(sizeof (t_dot));
 	if ((*map)->obstacle_head == NULL)
 		fail(1, *map);
+	(*map)->obstacle_head->next = NULL;
 	(*map)->front_line = (*map)->obstacle_head;
 	(*map)->square.size = 0;
 	(*map)->square.location.row = 0;
