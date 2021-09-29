@@ -46,7 +46,7 @@ int		save_first(int fd, t_map *map);
 int		read_first(int fd, char *buf);
 int		check_file(char *file_name, t_map *map);
 int		check_all(int fd, t_map *map);
-int		check_line(int fd, t_map *map, int y_counter);
+int		check_line(int fd, t_map *map, int y_counter, int *d_l_check);
 int		check_char(char c, t_map *map, int x_counter, int y_counter);
 int		set_g_x_counter(int x_counter, t_map *map);
 void	set_buf(char *buf, char c);
