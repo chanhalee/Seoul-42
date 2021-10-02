@@ -40,11 +40,11 @@ void	print_inner(t_map *map, int xs, int xe, int ys)
 				write(1, &(map->square_c), 1);
 			else
 			{
-				if (y == map->front_line->col && x == map->front_line->row)
+				if (map->front_line != NULL && y == map->front_line->col
+					&& x == map->front_line->row)
 				{
 					write(1, &(map->obstacle_c), 1);
-					if (map->front_line->next != NULL)
-						map->front_line = map->front_line->next;
+					map->front_line = map->front_line->next;
 				}
 				else
 					write(1, &(map->empty_c), 1);
