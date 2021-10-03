@@ -6,7 +6,7 @@
 /*   By: yeoyoon <yeoyoon@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:19:27 by yeoyoon           #+#    #+#             */
-/*   Updated: 2021/09/29 17:40:17 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/09/28 17:19:28 by yeoyoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,30 @@ static int	g_x_check;
 int	check_all(int fd, t_map *map)
 {
 	int	y_counter;
-	int	d_l_check;
+    int d_l_check;////
 
+<<<<<<< HEAD
+	y_counter = 0;
+    d_l_check = 0;////
+	while (check_line(fd, map, y_counter, &d_l_check))
+		y_counter++;
+    if (y_counter != map -> size_col || d_l_check != map -> size_col)////
+=======
 	d_l_check = 0;
 	y_counter = 0;
 	while (check_line(fd, map, y_counter, &d_l_check))
 		y_counter++;
 	if (y_counter != map -> size_col || d_l_check != map -> size_col)
+>>>>>>> 573ac56418a3354b6afec1ae11458e146c5eec6f
 		return (0);
 	return (1);
 }
 
+<<<<<<< HEAD
+int    check_line(int fd, t_map *map, int y_counter, int *d_l_check)////
+=======
 int	check_line(int fd, t_map *map, int y_counter, int *d_l_check)
+>>>>>>> 573ac56418a3354b6afec1ae11458e146c5eec6f
 {
 	char	c;
 	int		x_counter;
@@ -38,7 +50,11 @@ int	check_line(int fd, t_map *map, int y_counter, int *d_l_check)
 	{
 		while (c == '\n')
 			return (0);
+<<<<<<< HEAD
+        (*d_l_check)++;////
+=======
 		(*d_l_check)++;
+>>>>>>> 573ac56418a3354b6afec1ae11458e146c5eec6f
 		x_counter = check_char(c, map, x_counter, y_counter);
 		while (read(fd, &c, 1))
 		{
