@@ -1,9 +1,3 @@
-rm .DS_Store
-rm */.DS_Store
-rm */*/.DS_Store
-rm a.out
-rm */a.out
-rm */*/a.out
-rm *.swp
-rm */*.swp
-rm */*/*.swp
+find . -type f -name .DS_Store -delete
+find . -type f -name a.out -delete
+find . -type f -name *.swp -delete
