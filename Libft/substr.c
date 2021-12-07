@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calloc.c                                           :+:      :+:    :+:   */
+/*   substr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:27:51 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/03 12:40:36 by chanhale         ###   ########.fr       */
+/*   Created: 2021/12/03 12:45:01 by chanhale          #+#    #+#             */
+/*   Updated: 2021/12/03 13:58:37 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*cast_temp;
-	size_t			iter;
+	char			*allocated;
+	char			*result;
+	unsigned int	s_offset;
 
-	iter = -1;
-	cast_temp = (char *)malloc(count * size);
-	while (++iter < count * size)
+	allocated = (char *)malloc(sizeof(char) * len);
+	if (!allocated || len == 0)
+		return (NULL);
+	result = allocated;
+	s_offset = -1;
+	while (*(s + start) && --len)
 	{
-		*cast_temp &= 0x00;
-		cast_temp++;
+		*allocated = *(s + start);
+		++s;
+		++allocated;
 	}
-	return ((void *) cast_temp);
+	return (result);
 }
