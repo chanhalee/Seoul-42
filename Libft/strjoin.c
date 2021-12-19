@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:57:26 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/03 14:09:54 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/19 13:59:57 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		index_str++;
 	index_result += (index_str + 1);
 	result = (char *)malloc(sizeof(char) * index_result);
+	if(result == NULL)
+		return (NULL);
+	iter_result = result;
 	while (*s1)
 		*(iter_result++) = *(s1++);
 	while (*s2)

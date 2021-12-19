@@ -6,8 +6,9 @@
 
 int main(void)
 {
-	char	s[20] = "123456789";
-	printf("%s", (char *)ft_memmove(s+2, s, 5));
+	char	s[20] = " 123456789 ";
+
+	printf("%s", ft_strtrim(s,"  \0"));
 
 	return 0;
 }
