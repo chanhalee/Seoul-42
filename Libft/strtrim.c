@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:10:28 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/19 15:14:30 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/20 14:37:45 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	const char	*iter_set;
 
 	result = NULL;
-	if(s1 == NULL || set == NULL || !subfunc(s1, set, &result))
+	if (s1 == NULL || set == NULL || !subfunc(s1, set, &result))
 		return (NULL);
 	iter_result = result;
 	while (*s1)
 	{
 		iter_set = set;
 		flag = 1;
-		while (*iter_set)
+		while (*iter_set && flag)
 			if (*(s1) == *(iter_set++))
-			{
 				flag = 0;
-				break ;
-			}
 		if (flag)
 			*(iter_result++) = *s1;
 		s1++;
@@ -51,19 +48,22 @@ static char	*subfunc(const char *s1, const char *set, char **result)
 	iter_s1 = s1;
 	iter_set = set;
 	size = 1;
-	while (*iter_s1){
+	while (*iter_s1)
+	{
 		iter_set = set;
 		while (*iter_set)
+		{
 			if (*(iter_s1) == *(iter_set++))
 			{
 				size--;
 				break ;
 			}
+		}
 		size++;
 		iter_s1++;
 	}
-	*result = (char*)malloc(size * sizeof(char));
+	*result = (char *)malloc(size * sizeof(char));
 	if (*result != NULL)
-		*(*result + size -1) = '\0';
+		*(*result + size - 1) = '\0';
 	return (*result);
 }
