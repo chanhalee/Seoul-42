@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 13:10:29 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/20 14:42:11 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/28 23:37:06 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static char		*make_elements(char const **s, char c);
 
 char	**ft_split(char const *s, char c)
 {
-	char		**result;
-	char		**iter_result;
-	char const	*element;
-	size_t		arr_size;
+	char	**result;
+	char	**iter_result;
+	char	*element;
+	size_t	arr_size;
 
 	arr_size = get_arr_size(s, c);
 	result = (char **)malloc(sizeof(char) * arr_size);
@@ -69,7 +69,7 @@ static char	*make_elements(char const **s, char c)
 	size_t		size;
 	char		*result;
 	char const	*iter_s;
-	char const	*iter_result;
+	char		*iter_result;
 
 	size = 1;
 	while (**s == c)

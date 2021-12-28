@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 00:52:23 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/28 02:06:02 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/29 00:07:37 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	alloc_space(const int nbr, char **result, char **iter);
+static int	alloc_space(int nbr, char **result, char **iter);
 static void	iter(int nb, char **result);
 
 char	*ft_itoa(int n)
@@ -22,11 +22,11 @@ char	*ft_itoa(int n)
 
 	if (alloc_space(n, &result, &iter_result))
 		return (NULL);
-	iter(n, *iter_result);
+	iter(n, &iter_result);
 	return (result);
 }
 
-static int	alloc_space(const int nbr, char **result, char **iter)
+static int	alloc_space(int nbr, char **result, char **iter)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ static int	alloc_space(const int nbr, char **result, char **iter)
 	if (nbr < 0)
 	{
 		i++;
-		nbr *= -1;
+		nbr = nbr * -1;
 	}
 	while (nbr > 9)
 	{
@@ -43,7 +43,6 @@ static int	alloc_space(const int nbr, char **result, char **iter)
 	}
 	*result = (char *)malloc(sizeof(char) * (i + 1));
 	*iter = *result;
-	*len = i + 1;
 	if (iter == NULL || result == NULL)
 		return (1);
 	return (0);
