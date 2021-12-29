@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strtrim.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:10:28 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/20 14:37:45 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/29 12:35:03 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int			flag;
 	char		*result;
 	char		*iter_result;
-	const char	*iter_set;
+	char const	*iter_set;
 
 	result = NULL;
 	if (s1 == NULL || set == NULL || !subfunc(s1, set, &result))
@@ -64,6 +64,6 @@ static char	*subfunc(const char *s1, const char *set, char **result)
 	}
 	*result = (char *)malloc(size * sizeof(char));
 	if (*result != NULL)
-		*(*result + size - 1) = '\0';
+		(*result)[size - 1] = '\0';
 	return (*result);
 }

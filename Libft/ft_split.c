@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 13:10:29 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/28 23:37:06 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/29 12:39:20 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ char	**ft_split(char const *s, char c)
 	size_t	arr_size;
 
 	arr_size = get_arr_size(s, c);
-	result = (char **)malloc(sizeof(char) * arr_size);
+	result = (char **)malloc(sizeof(char *) * arr_size);
 	if (result == NULL)
 		return (NULL);
 	iter_result = result;
 	while (--arr_size)
 	{
 		element = make_elements(&s, c);
-		if (element != NULL)
+		if (element == NULL)
 			return (NULL);
 		*(iter_result++) = element;
 	}

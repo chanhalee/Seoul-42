@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 00:52:23 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 00:07:37 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/29 12:57:36 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ static int	alloc_space(int nbr, char **result, char **iter)
 	if (nbr < 0)
 	{
 		i++;
+		if (nbr < -9)
+		{
+			nbr /= 10;
+			i++;
+		}
 		nbr = nbr * -1;
 	}
 	while (nbr > 9)
@@ -43,8 +48,9 @@ static int	alloc_space(int nbr, char **result, char **iter)
 	}
 	*result = (char *)malloc(sizeof(char) * (i + 1));
 	*iter = *result;
-	if (iter == NULL || result == NULL)
+	if (*result == NULL)
 		return (1);
+	(*result)[i] = '\0';
 	return (0);
 }
 
@@ -54,16 +60,16 @@ static void	iter(int nb, char **result)
 
 	if (nb < 0)
 	{
-		*(*result++) = '-';
+		*((*result)++) = '-';
 		c = 48 + (nb % 10) * -1;
 		if ((nb / 10) * -1 > 0)
 			iter((nb / 10) * -1, result);
-		*(*result++) = c;
+		*((*result)++) = c;
 	}
 	else
 	{
 		if (nb >= 10)
 			iter(nb / 10, result);
-		*(*result++) = 48 + nb % 10;
+		*((*result)++) = 48 + nb % 10;
 	}
 }
