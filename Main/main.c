@@ -6,9 +6,12 @@
 
 int main(void)
 {
-	char	s[20] = " 123456789 ";
+	char	s[200] = " 123423231211aa 1\n567d121as12389 ";
+	char	a[10] = "123 ";
 
-	printf("%s", ft_strtrim(s,"  \0"));
+
+
+	printf("%s", ft_strtrim(s, a));
 
 	return 0;
 }
