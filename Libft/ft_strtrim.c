@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:10:28 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 12:35:03 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/29 15:28:59 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,22 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 static char	*subfunc(const char *s1, const char *set, char **result)
 {
-	const char	*iter_s1;
 	const char	*iter_set;
 	size_t		size;
+	int			flag;
 
-	iter_s1 = s1;
 	iter_set = set;
 	size = 1;
-	while (*iter_s1)
+	flag = 1;
+	while (*s1)
 	{
 		iter_set = set;
-		while (*iter_set)
-		{
-			if (*(iter_s1) == *(iter_set++))
-			{
-				size--;
-				break ;
-			}
-		}
-		size++;
-		iter_s1++;
+		while (*iter_set && flag)
+			if (*(s1) == *(iter_set++))
+				flag = 0;
+		if (flag)
+			size++;
+		s1++;
 	}
 	*result = (char *)malloc(size * sizeof(char));
 	if (*result != NULL)

@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 00:38:22 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 13:50:25 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/29 14:09:07 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	alloc_new_t_list(t_list **new);
 static void	ft_st_lstclear(t_list **lst, void (*del)(void *));
-
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -24,7 +23,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL || f == NULL || alloc_new_t_list(&result))
 		return (NULL);
-	write(1, "1\n", 2);
 	result_iter = result;
 	result_iter->content = f(lst->content);
 	result_iter->next = lst->next;
@@ -68,4 +66,3 @@ static void	ft_st_lstclear(t_list **lst, void (*del)(void *))
 	}
 	*lst = NULL;
 }
-
