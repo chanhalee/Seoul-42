@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:27:51 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 02:16:29 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:49:14 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,11 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t			iter;
 
 	iter = 0;
-	if (count == 0 || size == 0)
-		return (NULL);
 	result = (unsigned char *)malloc(sizeof(unsigned char) * count * size);
 	if (result == NULL)
 		return (NULL);
 	iter_result = result;
 	while (iter < count * size)
-	{
-		*iter_result = 0;
-		iter_result++;
-		iter++;
-	}
+		iter_result[iter++] = 0;
 	return ((void *)result);
 }

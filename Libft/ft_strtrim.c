@@ -6,60 +6,66 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:10:28 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 15:28:59 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:38:18 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*subfunc(const char *s1, const char *set, char **result);
+static int	sub_func(char const *s1, char const *set, char **result, int *g_s);
+static int	sub_is_in(char c, char const *set);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int			flag;
+	int			size;
 	char		*result;
 	char		*iter_result;
-	char const	*iter_set;
 
 	result = NULL;
-	if (s1 == NULL || set == NULL || !subfunc(s1, set, &result))
+	if (s1 == NULL || set == NULL || sub_func(s1, set, &result, &size))
 		return (NULL);
 	iter_result = result;
-	while (*s1)
-	{
-		iter_set = set;
-		flag = 1;
-		while (*iter_set && flag)
-			if (*(s1) == *(iter_set++))
-				flag = 0;
-		if (flag)
-			*(iter_result++) = *s1;
+	while (*s1 && sub_is_in(*(s1), set))
 		s1++;
-	}
+	while (--size)
+		*(iter_result++) = *(s1++);
 	return (result);
 }
 
-static char	*subfunc(const char *s1, const char *set, char **result)
+static int	sub_func(char const *s1, char const *set, char **result, int *g_s)
 {
-	const char	*iter_set;
-	size_t		size;
-	int			flag;
+	char const	*iter_set;
+	int			size;
 
 	iter_set = set;
-	size = 1;
-	flag = 1;
-	while (*s1)
+	size = 0;
+	while (s1[size++])
+		;
+	while (size && sub_is_in(s1[size - 1], set))
+		size--;
+	while (*s1 && sub_is_in(*(s1++), set))
+		size--;
+	if (size < 0)
+		size = 0;
+	*result = (char *)malloc((size + 1) * sizeof(char));
+	if (*result == NULL)
 	{
-		iter_set = set;
-		while (*iter_set && flag)
-			if (*(s1) == *(iter_set++))
-				flag = 0;
-		if (flag)
-			size++;
-		s1++;
+		return (1);
 	}
-	*result = (char *)malloc(size * sizeof(char));
-	if (*result != NULL)
-		(*result)[size - 1] = '\0';
-	return (*result);
+	(*result)[size] = '\0';
+	*g_s = size + 1;
+	return (0);
+}
+
+static int	sub_is_in(char c, char const *set)
+{
+	size_t	index;
+
+	index = 0;
+	if (c == '\0')
+		return (1);
+	while (set[index])
+		if (set[index++] == c)
+			return (1);
+	return (0);
 }

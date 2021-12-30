@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:57:26 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/20 14:38:04 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/30 20:28:23 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char			*result;
 	char			*iter_result;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	index_result = 0;
 	index_str = 0;
 	while (*(s1 + index_result))
