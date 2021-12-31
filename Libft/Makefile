@@ -1,26 +1,24 @@
 NAME		= libft.a
 
-FILES		=	ft_strlen \
+FILES		=	ft_isalpha \
+				ft_toupper \
+				ft_isdigit \
+				ft_tolower \
+				ft_isalnum \
+				ft_strchr \
+				ft_isascii \
+				ft_strrchr \
+				ft_strlen \
+				ft_strncmp \
+				ft_memset \
+				ft_memchr \
+				ft_bzero \
+				ft_memcmp \
+				ft_memcpy \
+				ft_memmove \
 				ft_strlcpy \
 				ft_strlcat \
-				ft_strchr \
-				ft_strrchr \
-				ft_strnstr \
-				ft_strncmp \
 				ft_atoi \
-				ft_isalpha \
-				ft_isdigit \
-				ft_isalnum \
-				ft_isascii \
-				ft_isprint \
-				ft_toupper \
-				ft_tolower \
-				ft_memset \
-				ft_bzero \
-				ft_memcpy \
-				ft_memchr \
-				ft_memmove \
-				ft_memcmp \
 				ft_calloc \
 				ft_strdup \
 				ft_substr \
@@ -33,30 +31,30 @@ FILES		=	ft_strlen \
 				ft_putchar_fd \
 				ft_putstr_fd \
 				ft_putendl_fd \
-				ft_putnbr_fd
+				ft_putnbr_fd \
 
-FILES_BONUS	=	ft_lstadd_back \
+FILES_BONUS	=	ft_lstnew \
 				ft_lstadd_front \
-				ft_lstclear \
-				ft_lstdelone \
-				ft_lstlast \
-				ft_lstnew \
 				ft_lstsize \
+				ft_lstlast \
+				ft_lstadd_back \
+				ft_lstdelone \
+				ft_lstclear \
 				ft_lstiter \
-				ft_lstmap
+				ft_lstmap \
 
-DIR_OBJS	= ./
-OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
-OBJS_BONUS	= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES_BONUS)))
-DIR_SRCS	= ./
-SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
-SRCS_BONUS	= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BONUS)))
+DIR_OBJS	=	./
+OBJS		=	$(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
+OBJS_BONUS	=	$(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES_BONUS)))
+DIR_SRCS	=	./
+SRCS		=	$(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
+SRCS_BONUS	=	$(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BONUS)))
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
 
-AR			= ar crs
-RM			= rm -f
+AR			=	ar crs
+RM			=	rm -f
 
 .c.o:		$(SRCS) $(SRCS_BONUS)
 			$(CC) $(CFLAGS) -c -o $@ $<
@@ -69,12 +67,12 @@ $(NAME):	$(OBJS)
 bonus:		$(OBJS_BONUS)
 			$(AR) $(NAME) $(OBJS_BONUS)
 
-clean: 
+clean:
 			$(RM) $(OBJS) $(OBJS_BONUS)
 
-fclean: 	clean
+fclean:		clean
 			$(RM) $(NAME)
 
-re: 		fclean all
+re:			fclean all
 
-.PHONY:		all clean fclean re 
+.PHONY:		all clean fclean re
