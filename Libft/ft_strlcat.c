@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:47:29 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 10:38:25 by chanhale         ###   ########.fr       */
+/*   Updated: 2021/12/31 17:48:55 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
 	srclength = 0;
 	destlength = 0;
 	len = 0;
-	while (dst[destlength] != '\0')
-		destlength++;
-	while (src[srclength] != '\0')
-		srclength++;
-	cy = destlength;
+	destlength = ft_strlen(dst);
+	srclength = ft_strlen(src);
 	if (size <= destlength)
 		return (srclength + size);
+	cy = destlength;
 	while (destlength < size - 1 && src[len])
 	{
 		dst[destlength++] = src[len++];
