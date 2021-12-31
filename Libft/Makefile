@@ -1,6 +1,8 @@
 NAME		= libft.a
 
 FILES		=	ft_isalpha \
+				ft_isprint \
+				ft_strnstr \
 				ft_toupper \
 				ft_isdigit \
 				ft_tolower \
