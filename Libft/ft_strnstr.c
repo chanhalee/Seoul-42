@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 14:36:02 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/30 19:40:24 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/04 01:31:12 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ char	*ft_strnstr(const char *h, const char *n, size_t len)
 	size_t	i_n;
 
 	i_h = -1;
+	if (h == NULL || n == NULL || *h == '\0')
+		return (NULL);
+	if (*n == '\0')
+		return ((char *)h);
 	while (++i_h < len)
 	{
 		i_n = -1;

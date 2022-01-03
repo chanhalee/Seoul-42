@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 10:41:01 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 11:04:25 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/04 01:35:58 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_atoi(char *str)
 		&& str[counter] <= '9')
 	{
 		result *= 10;
-		result = result + (str[counter] - '0') * minuscounter;
+		result += (str[counter] - '0') * minuscounter;
 		counter++;
 	}
 	return (result);
