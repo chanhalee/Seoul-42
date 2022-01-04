@@ -6,13 +6,13 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:42:01 by chanhale          #+#    #+#             */
-/*   Updated: 2021/11/10 12:47:07 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/04 15:35:26 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *restrict dest, const char *restrict src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	temp;
 	size_t	counter;

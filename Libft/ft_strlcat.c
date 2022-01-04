@@ -6,13 +6,13 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:47:29 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/31 17:48:55 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/04 15:33:50 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	destlength;
 	size_t	srclength;
