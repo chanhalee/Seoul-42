@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:07:19 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 15:07:42 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/04 15:52:44 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strrchr(const char *s, int c)
 
 	casted_c = (char) c;
 	index = 0;
-	if (s == NULL)
-		return (NULL);
 	while (s[index] != '\0')
 		index++;
 	if (index == 0)

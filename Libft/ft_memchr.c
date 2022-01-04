@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:15:10 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/29 02:36:34 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/04 15:53:24 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*casted_s;
 
-	if (s == NULL || n == 0)
+	if (n == 0)
 		return (NULL);
 	casted_s = (const unsigned char *)s;
 	while (n--)
