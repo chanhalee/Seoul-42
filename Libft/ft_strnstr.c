@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 14:36:02 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/06 16:55:15 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:53:50 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 char	*ft_strnstr(const char *h, const char *n, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*iter_h;
+	size_t	i_h;
+	size_t	i_n;
 
-	i = 0;
-	iter_h = (char *)h;
-	if (n[i] == '\0')
-		return (iter_h);
-	while (i < len && iter_h[i] != '\0')
+	i_h = -1;
+	if (*n == '\0')
+		return ((char *)h);
+	while (++i_h < len)
 	{
-		j = 0;
-		if (iter_h[i] == n[j])
+		i_n = -1;
+		while (++i_n + i_h <= len)
 		{
-			while ((iter_h[i + j] == n[j])
-				&& (n[j] != '\0') && (i + j < len))
-				j++;
-			if (n[j] == '\0')
-				return (&iter_h[i]);
+			if (n[i_n] == '\0')
+				return ((char *)h + i_h);
+			if (h[i_h + i_n] == '\0' || h[i_h + i_n] != n[i_n])
+				break ;
 		}
-		i++;
+		if (i_h + i_n == len || h[i_h + i_n] == '\0')
+			break ;
 	}
-	return (0);
+	return (NULL);
 }
