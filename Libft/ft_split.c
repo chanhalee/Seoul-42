@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 13:10:29 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/30 21:41:39 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:19:41 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static size_t	get_arr_size(char const *s, char c);
 static char		*make_elements(char const **s, char c);
+static void		emergency_exit(char **p, char **iter_p);
 
 char	**ft_split(char const *s, char c)
 {
@@ -32,6 +33,8 @@ char	**ft_split(char const *s, char c)
 	while (--arr_size)
 	{
 		element = make_elements(&s, c);
+		if (element == NULL)
+			emergency_exit(result, iter_result);
 		if (element == NULL)
 			return (NULL);
 		*(iter_result++) = element;
@@ -77,11 +80,8 @@ static char	*make_elements(char const **s, char c)
 	while (**s == c)
 		(*s)++;
 	iter_s = *s;
-	while (**s != c && **s != '\0')
-	{
-		size++;
+	while (**s != c && **s != '\0' && size++)
 		(*s)++;
-	}
 	result = (char *)malloc(sizeof(char) * size);
 	if (result == NULL)
 		return (NULL);
@@ -90,4 +90,21 @@ static char	*make_elements(char const **s, char c)
 		*(iter_result++) = *(iter_s++);
 	*iter_result = '\0';
 	return (result);
+}
+
+static void	emergency_exit(char **p, char **iter_p)
+{
+	if (*iter_p != NULL)
+		free(*iter_p);
+	if (*p == *iter_p)
+	{
+		free (p);
+		return ;
+	}
+	while ((*p) != --(*iter_p))
+		if (*iter_p != NULL)
+			free(*iter_p);
+	if (*iter_p != NULL)
+		free(*iter_p);
+	free (p);
 }
