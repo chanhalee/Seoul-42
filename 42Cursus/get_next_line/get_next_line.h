@@ -5,7 +5,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 99
+#  define BUFFER_SIZE 1
 # endif
 
 size_t	search_new_line_char(char *buffer);
