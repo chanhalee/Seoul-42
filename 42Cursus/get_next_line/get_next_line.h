@@ -8,13 +8,20 @@
 #  define BUFFER_SIZE 1
 # endif
 
-size_t	search_new_line_char(char *buffer);
-char	*buf_has_all(char **buffer, size_t length);
-char	*buf_incomplete(int fd, char **buffer);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *src);
-char	*get_next_line(int fd);
+# define TYPE_NEW_LINE 1
+# define TYPE_NULL 0
+
+typedef struct s_length
+{
+	int		type;
+	size_t	len;
+}	t_length;
+
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+int			ft_my_strlen(const char *s, t_length *result);
+char		*ft_strjoin(char const *s1, char const *s2);
+int			read_data_subsidiary(int fd, char **pending, char **buffer);
+char		*read_data(int fd, char **pending, char *buffer);
+char		*get_next_line(int fd);
 
 #endif

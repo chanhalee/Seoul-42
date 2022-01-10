@@ -38,6 +38,11 @@ int main()
 	printf("%s\n", str);
 	free(str);
 	str = NULL;
+	str = get_next_line(10000);
+	printf("%s\n", str);
+	free(str);
+	close (fd);
+	str = NULL;
 	str = get_next_line(fd);
 	printf("%s\n", str);
 	free(str);

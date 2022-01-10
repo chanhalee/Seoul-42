@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:09:52 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/08 17:57:54 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:54:32 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,25 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (allocated);
 }
 
-size_t	ft_strlen(const char *s)
+int	ft_my_strlen(const char *s, t_length *result)
 {
-	size_t	iter;
+	size_t		iter;
 
 	iter = 0;
-	while (s[iter])
+	if (!s)
+	{
+		result->type = TYPE_NULL;
+		result->len = 0;
+		return (TYPE_NULL);
+	}
+	while (s[iter] && s[iter] != '\n')
 		iter++;
-	return (iter);
+	if (s[iter])
+		result->type = TYPE_NEW_LINE;
+	else
+		result->type = TYPE_NULL;
+	result->len = iter;
+	return (result->type);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -61,7 +72,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	index_str = 0;
 	while (*(s1 + index_result))
 		index_result++;
-	while (*(s2 + index_str) && *(s2 + index_str) != '\n')
+	while (*(s2 + index_str))
 		index_str++;
 	index_result += (index_str + 1);
 	result = (char *)malloc(sizeof(char) * index_result);
@@ -70,7 +81,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	iter_result = result;
 	while (*s1)
 		*(iter_result++) = *(s1++);
-	while (*s2 && *s2 != '\n')
+	while (*s2)
 		*(iter_result++) = *(s2++);
 	*iter_result = 0x00;
 	return (result);

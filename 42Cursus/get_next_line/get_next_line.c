@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:10:02 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/09 01:43:17 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:03:47 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,69 @@
 #include <stdio.h>
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*pending;
+	char		*buffer;
 	char		*result;
 	size_t		complete_length;
 
 	complete_length = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	if (!buffer)
-	{
-		buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-		*buffer = '\0';
-	}
-	else
-		complete_length = search_new_line_char(buffer);
-	if (complete_length)
-		result = buf_has_all(&buffer, complete_length);
-	else
-		result = buf_incomplete(fd, &buffer);
+	result = read_data(fd, &pending, buffer);
 	return (result);
 }
 
-size_t	search_new_line_char(char *buffer)
+char	*read_data(int fd, char **pending, char *buffer)
 {
-	size_t	length;
+	int			ret;
+	char		*char_ptr;
+	t_length	len_data;
 
-	length = 0;
-	while (++length && buffer[length - 1])
-		if (buffer[length -1] == '\n')
-			return (length);
-	return (0);
-}
-
-char	*buf_has_all(char **buffer, size_t length)
-{
-	char	*result;
-	char	*next_gen_buffer;
-
-	result = ft_substr(*buffer, 0, length - 1);
-	if (!result)
-		return (NULL);
-	next_gen_buffer = ft_substr(*buffer, length, BUFFER_SIZE);
-	free (*buffer);
-	*buffer = next_gen_buffer;
-	return (result);
-}
-
-char	*buf_incomplete(int fd, char **buffer)
-{
-	char	*result;
-	char	*next_gen;
-	int		length;
-
-	result = ft_strdup(*buffer);
-	if (!result)
-		return (NULL);
-	while (!search_new_line_char(*buffer))
+	if (pending && *pending && ft_my_strlen(*pending, &len_data))
 	{
-		length = read(fd, *buffer, BUFFER_SIZE);
-		if (length == 0)
-			break ;
-		if (length < 0)
-			free (result);
-		if (length < 0)
-			return (0);
-		next_gen = ft_strjoin(result, *buffer);
-		free(result);
-		if (!next_gen)
+		buffer = ft_substr(*pending, 0, len_data.len);
+		if (!buffer)
 			return (NULL);
-		result = next_gen;
+		char_ptr = ft_substr(*pending, len_data.len + 1, BUFFER_SIZE);
+		free (*pending);
+		*pending = char_ptr;
+		return (buffer);
 	}
-	next_gen = NULL;
-	if (search_new_line_char(*buffer))
-		next_gen = ft_substr(*buffer, search_new_line_char(*buffer), BUFFER_SIZE);
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	if (read_data_subsidiary(fd, pending, &buffer))
+		return (NULL);
+	return (buffer);
+}
+
+int	read_data_subsidiary(int fd, char **pending, char **buffer)
+{
+	int			read_ret;
+	char		*next_pending;
+	t_length	len_data;
+
+	if (!(*pending))
+		*pending = ft_strjoin("","");
+	read_ret = 1;
+	while ((*pending) && !ft_my_strlen(*pending, &len_data) && read_ret)
+	{
+		read_ret = read(fd, *buffer, BUFFER_SIZE);
+		if (read_ret < 0)
+			break ;
+		next_pending = ft_strjoin(*buffer, *pending);
+		free (*pending);
+		*pending = next_pending;
+	}
 	free (*buffer);
-	*buffer = next_gen;
-	return (result);
+	if (!(*pending) || read_ret < 0)
+		return (-1);
+	*buffer = ft_substr(*pending, 0, len_data.len);
+	//printf("%s||\n", *buffer);
+	if (!(*buffer))
+		return (-1);
+	next_pending = ft_substr(*pending, len_data.len + 1, BUFFER_SIZE);
+	free (*pending);
+	*pending = next_pending;
+	return (0);
 }
