@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:09:52 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/10 18:54:32 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/11 02:27:39 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ int	ft_my_strlen(const char *s, t_length *result)
 	iter = 0;
 	if (!s)
 	{
-		result->type = TYPE_NULL;
-		result->len = 0;
+		(*result).type = TYPE_NULL;
+		(*result).len = 0;
 		return (TYPE_NULL);
 	}
 	while (s[iter] && s[iter] != '\n')
 		iter++;
 	if (s[iter])
-		result->type = TYPE_NEW_LINE;
+		(*result).type = TYPE_NEW_LINE;
 	else
-		result->type = TYPE_NULL;
-	result->len = iter;
-	return (result->type);
+		(*result).type = TYPE_NULL;
+	(*result).len = iter;
+	return ((*result).type);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -83,25 +83,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		*(iter_result++) = *(s1++);
 	while (*s2)
 		*(iter_result++) = *(s2++);
-	*iter_result = 0x00;
+	*iter_result = '\0';
 	return (result);
 }
 
-char	*ft_strdup(const char *src)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int		size;
-	int		localindex;
-	char	*result;
+	unsigned char	write_val;
+	size_t			iter;
+	unsigned char	*casted_b;
 
-	size = 0;
-	while (src[size])
-		size++;
-	result = (char *)malloc((size + 1) * sizeof(char));
-	if (result == NULL)
-		return (NULL);
-	localindex = -1;
-	while (++localindex < size)
-		result[localindex] = src[localindex];
-	result[localindex] = '\0';
-	return (result);
+	iter = 0;
+	casted_b = (unsigned char *)b;
+	write_val = (unsigned char) c;
+	while (iter < len)
+		casted_b[iter++] = write_val;
+	return (b);
 }
