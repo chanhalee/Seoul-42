@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:10:02 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/31 01:22:11 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/31 03:09:28 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 	char		*result;
 
 	buffer = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd>= OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= OPEN_MAX)
 		return (NULL);
 	result = read_data(fd, &(pending[fd]), buffer);
 	if (pending[fd] && *(pending[fd]) == '\0')
