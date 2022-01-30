@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:10:02 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/31 01:11:55 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/01/31 01:22:11 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 char	*get_next_line(int fd)
 {
-	static char	*pending;
+	static char	*pending[OPEN_MAX];
 	char		*buffer;
 	char		*result;
 
 	buffer = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd>= OPEN_MAX)
 		return (NULL);
-	result = read_data(fd, &pending, buffer);
-	if (pending && *pending == '\0')
+	result = read_data(fd, &(pending[fd]), buffer);
+	if (pending[fd] && *(pending[fd]) == '\0')
 	{
-		free (pending);
-		pending = NULL;
+		free (pending[fd]);
+		pending[fd] = NULL;
 	}
 	return (result);
 }
