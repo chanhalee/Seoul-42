@@ -6,12 +6,11 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:10:02 by chanhale          #+#    #+#             */
-/*   Updated: 2022/01/31 03:09:28 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/02/01 22:40:30 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
