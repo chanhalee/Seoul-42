@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 15:21:53 by chanhale          #+#    #+#             */
-/*   Updated: 2022/02/06 15:26:18 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:35:09 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,33 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 			i++;
-			ret += deal_format(&ap, str[i++]);
+			ret += forge(&ap, str[i++]);
 		}
 	}
 	va_end(ap);
 	return (ret);
 }
 
-int	deal_format(va_list *ap, char c)
+int	forge(va_list *ap, char c)
 {
 	int	ret;
 
+	ret = 0;
 	if (c == 'd' || c == 'i')
 		ret = int_form(ap);
 	else if (c == 'u')
 		ret = uns_int_form(ap);
 	else if (c == 'x')
-		ret = small_x_form(ap);
+		ret = lower_form(ap);
 	else if (c == 'X')
-		ret = big_x_form(ap);
+		ret = upper_form(ap);
 	else if (c == 'c')
 		ret = char_form(ap);
 	else if (c == 's')
 		ret = str_form(ap);
 	else if (c == 'p')
 		ret = ptr_form(ap);
-	else
-		ret = other_form(c);
+	else if (c == '%')
+		ret = write(1, "%", 1);
 	return (ret);
-}
-
-int	other_form(char c)
-{
-	if (c == '%')
-		write(1, "%", 1);
-	else if (ft_isascii(c))
-		write(1, &c, 1);
-	else
-		return (0);
-	return (1);
 }

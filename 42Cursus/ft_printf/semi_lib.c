@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   semi_lib.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
+/*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 23:25:58 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/28 23:29:16 by chanhale         ###   ########.fr       */
+/*   Created: 2022/02/09 11:51:30 by chanhale          #+#    #+#             */
+/*   Updated: 2022/02/09 12:00:34 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+}
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -33,4 +40,23 @@ void	ft_putnbr_fd(int n, int fd)
 		c = 48 + n % 10;
 		write(fd, &c, 1);
 	}
+}
+
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	len;
+
+	if (s == NULL || fd < 0)
+		return ;
+	len = 0;
+	while (s[len])
+		len++;
+	write(fd, s, len);
 }
