@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 22:38:47 by chanhale          #+#    #+#             */
-/*   Updated: 2022/02/27 20:11:48 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:02:53 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,36 @@ t_content	*make_content(int integer)
 {
 	t_content	*ret;
 
-	ret = (t_content)malloc(sizeof(t_content));
+	ret = (t_content *)malloc(sizeof(t_content));
 	if (!ret)
 		emergency_exit();
 	ret->before = NULL;
 	ret->next = NULL;
-	ret->content = 0;
+	ret->content = integer;
 	return (ret);
+}
+
+void	free_content(t_content **content)
+{
+	if (!content || !*content)
+		return ;
+	free(*content);
+	*content = NULL;
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_content	*content;
+
+	if (!stack || !*stack)
+		return ;
+	while ((*stack)->quantity > 0)
+	{
+		content = (*stack)->top;
+		(*stack)->quantity--;
+		(*stack)->top = content->before;
+		free_content(&content);
+	}
+	free(*stack);
+	*stack = NULL;
 }

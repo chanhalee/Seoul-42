@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 12:41:01 by chanhale          #+#    #+#             */
-/*   Updated: 2022/02/27 20:12:29 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/02/27 20:50:43 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ t_stack	*stack_push_content(t_stack *stack, t_content *content)
 	return (stack);
 }
 
+t_stack	*stack_push_back_content(t_stack *stack, t_content *content)
+{
+	if (!stack || !content)
+		return (stack);
+	if (!(stack->top))
+		stack->top = content;
+	else
+		stack->bottom->before = content;
+	(stack->quantity)++;
+	(stack->version)++;
+	content->next = stack->bottom;
+	stack->bottom = content;
+	return (stack);
+}
+
 t_content	*stack_pop_content(t_stack *stack)
 {
 	t_content	*ret;
@@ -34,14 +49,31 @@ t_content	*stack_pop_content(t_stack *stack)
 	if (!stack->top)
 		return (NULL);
 	ret = stack->top;
-	stack->top = ret->before;
-	ret->before = NULL;
-	ret->next = NULL;
 	stack->quantity--;
 	(stack->version)++;
-	if (stack->before == NULL)
+	stack->top = ret->before;
+	if (stack->top == NULL)
 		stack->bottom = NULL;
 	else
 		stack->top->next = NULL;
+	ret->before = NULL;
+	return (ret);
+}
+
+t_content	*stack_pop_back_content(t_stack *stack)
+{
+	t_content	*ret;
+
+	if (!stack->bottom)
+		return (NULL);
+	ret = stack->bottom;
+	stack->quantity--;
+	(stack->version)++;
+	stack->bottom = ret->next;
+	if (stack->bottom == NULL)
+		stack->top = NULL;
+	else
+		stack->bottom->before = NULL;
+	ret->next = NULL;
 	return (ret);
 }
