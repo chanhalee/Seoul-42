@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:41:09 by chanhale          #+#    #+#             */
-/*   Updated: 2022/02/28 23:35:17 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/03/01 17:36:53 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	op_rotate(t_stack *stack, int is_it_reverse)
 {
 	t_content	*content;
 
-	if (stack->quantity < 2)
+	if (stack->quantity < 1)
 		return (0);
 	if (is_it_reverse == TYPE_REVERSE)
 	{
@@ -81,14 +81,14 @@ void	operator(t_stack *stack_a, t_stack *stack_b, int operation)
 		write(1, "ra\n", 3);
 	else if (operation == TYPE_OP_RB && op_rotate(stack_b, TYPE_STRAIGHT))
 		write(1, "rb\n", 3);
-	else if (operation == TYPE_OP_RR && op_check(stack_a, stack_b, 2)
+	else if (operation == TYPE_OP_RR && op_check(stack_a, stack_b, 1)
 		&& op_rotate(stack_a, 0) && op_rotate(stack_b, TYPE_STRAIGHT))
 		write(1, "rr\n", 3);
 	else if (operation == TYPE_OP_RRA && op_rotate(stack_a, TYPE_REVERSE))
 		write(1, "rra\n", 4);
 	else if (operation == TYPE_OP_RRB && op_rotate(stack_b, TYPE_REVERSE))
 		write(1, "rrb\n", 4);
-	else if (operation == TYPE_OP_RRR && op_check(stack_a, stack_b, 2)
+	else if (operation == TYPE_OP_RRR && op_check(stack_a, stack_b, 1)
 		&& op_rotate(stack_a, TYPE_REVERSE) && op_rotate(stack_b, TYPE_REVERSE))
 		write(1, "rrr\n", 4);
 }

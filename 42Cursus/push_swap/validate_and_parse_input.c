@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 20:03:31 by chanhale          #+#    #+#             */
-/*   Updated: 2022/02/28 17:38:13 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:54:54 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_stack	*parse_input(int argc, char **argv)
 				emergency_exit();
 			stack_push_back_content(ret, make_content((int)parsed_integer));
 		}
-		printf("%d\n", ret->bottom->content);
 		clear_all_static(&arg_arr_2d);
 	}
 	return (ret);

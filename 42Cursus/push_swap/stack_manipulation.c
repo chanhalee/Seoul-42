@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_push_pop.c                                   :+:      :+:    :+:   */
+/*   stack_manipulation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 12:41:01 by chanhale          #+#    #+#             */
-/*   Updated: 2022/02/27 20:50:43 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/03/01 17:42:11 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_content	*stack_pop_content(t_stack *stack)
 	if (!stack->top)
 		return (NULL);
 	ret = stack->top;
-	stack->quantity--;
+	(stack->quantity)--;
 	(stack->version)++;
 	stack->top = ret->before;
 	if (stack->top == NULL)
