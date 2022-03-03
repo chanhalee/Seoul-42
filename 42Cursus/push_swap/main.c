@@ -6,7 +6,7 @@
 /*   By: lch <lch@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 19:47:50 by chanhale          #+#    #+#             */
-/*   Updated: 2022/03/03 17:03:08 by lch              ###   ########.fr       */
+/*   Updated: 2022/03/03 18:14:34 by lch              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	main(int argc, char **argv)
 	merge_sort(stack_a, stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	while(1)
-	;
 	return (0);
 }
 
