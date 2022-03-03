@@ -10,6 +10,7 @@ SRCS	= 	algorithm_util.c \
 			operations.c \
 			stack_manipulation.c \
 			validate_and_parse_input.c \
+			algorithm_special_for_five.c \
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 22:23:29 by chanhale          #+#    #+#             */
-/*   Updated: 2022/03/01 22:48:34 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/03/03 13:27:55 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void		free_stack(t_stack **stack);
 int			check_sorted(t_stack *stack, int is_it_reverse);
 int			sort_tiny_case(t_stack *stack_a, t_stack *stack_b);
 void		merge_seq_a(t_stack *stack_a, t_stack *stack_b, int n_a, int n_b);
+void		sort_tiny_case_three(t_stack *stack_a, t_stack *stack_b);
+void		sort_tiny_case_five(t_stack *stack_a, t_stack *stack_b);
 void		merge_sort(t_stack *stack_a, t_stack *stack_b);
 
 #endif
