@@ -3,8 +3,8 @@ NAME	= push_swap
 SRCS	= 	algorithm_util.c \
 			algorithm_merge.c \
 			data_structure.c \
-			ft_atoll_costom.c \
-			ft_split_costom.c \
+			ft_atoll_custom.c \
+			ft_split_custom.c \
 			iterator_manipulation.c \
 			main.c \
 			operations.c \
@@ -15,7 +15,6 @@ SRCS	= 	algorithm_util.c \
 OBJS	= $(SRCS:.c=.o)
 
 CC		= gcc
-AR		= ar crs
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
