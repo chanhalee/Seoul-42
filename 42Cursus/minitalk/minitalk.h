@@ -26,7 +26,7 @@
 typedef struct s_infobox
 {
 	int			counter;
-	char		character;
+	int			character;
 	pid_t		client_id;
 }	t_infobox;
 

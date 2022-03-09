@@ -19,37 +19,44 @@ static void	server_initiate(void)
 	ft_printf("pid: %d\n", getpid());
 	g_infobox.character = 0;
 	g_infobox.client_id = 0;
-	g_infobox.counter = 0;
+	g_infobox.counter = 1;
 }
 
-static void	info_clear(pid_t client_id)
-{
-	g_infobox.character = 0;
-	g_infobox.client_id = client_id;
-	g_infobox.counter = 0;
-}
+// static void	info_clear(pid_t client_id)
+// {
+// 	g_infobox.character = 0;
+// 	g_infobox.client_id = client_id;
+// 	g_infobox.counter = 0;
+// }
 
 static void handler(int signal, siginfo_t *info, void *func)
 {
 	(void)func;
-	if(g_infobox.client_id != info->si_pid)
-		info_clear(info->si_pid);
-	if(signal == SIGUSR1)
-		g_infobox.character = (g_infobox.character << 1) | 0;
-	else
-		g_infobox.character = (g_infobox.character << 1) | 1;
-	g_infobox.counter++;
-	if (g_infobox.counter == 8)
+	if (g_infobox.client_id != info->si_pid)
 	{
+		g_infobox.character = 0;
+		g_infobox.client_id = info->si_pid;
+		g_infobox.counter = 1;
+	}
+	g_infobox.character <<= 1;
+	g_infobox.counter <<= 1;
+	if (signal == SIGUSR1)
+		g_infobox.character |= 0;
+	else
+		g_infobox.character |= 1;
+	if (g_infobox.counter >> 8)
+	{
+		g_infobox.counter = 1;
+		//write(1, &g_infobox.character, 1);
 		ft_putchar_fd(g_infobox.character, 1);
-		info_clear(info->si_pid);
+		g_infobox.character = 0;
 	}
 	kill(info->si_pid, signal);
 }
 
 int	main(void)
 {
-	struct sigaction	sig_act;
+	static struct sigaction	sig_act;
 
 	server_initiate();
 	sig_act.sa_flags = SA_SIGINFO;
@@ -60,5 +67,13 @@ int	main(void)
 	sigaction(SIGUSR1, &sig_act, NULL);
 	sigaction(SIGUSR2, &sig_act, NULL);
 	while(1)
-		sleep(1);
+	{
+		if(sleep(1) == 0)
+		{
+			write(1, "1\n", 2);
+			g_infobox.character = 0;
+			g_infobox.client_id = 0;
+			g_infobox.counter = 1;
+		}
+	}
 }

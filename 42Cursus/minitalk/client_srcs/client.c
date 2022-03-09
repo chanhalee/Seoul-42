@@ -53,10 +53,10 @@ static void send_char()
 
 static void client_handler(int signal)
 {
-	if ((g_infobox.msg[g_infobox.index] >> g_infobox.bit & 1) + SIGUSR1 == signal)
+	if ((((g_infobox.msg[g_infobox.index] >> g_infobox.bit) & 1) + SIGUSR1) == signal)
 	{
 		g_infobox.bit--;
-		if (g_infobox.bit < 0)
+		if (g_infobox.bit < 0 && g_infobox.msg[g_infobox.index])
 		{
 			g_infobox.bit = 7;
 			g_infobox.index++;
@@ -81,6 +81,13 @@ int	main(int argc, char **argv)
 	sigaction(SIGUSR2, &sig_act, NULL);
 	retry = 10;
 	send_char();
-	while (g_infobox.msg[g_infobox.index] && g_infobox.bit >= 0)
-		usleep(100);
+	while (retry)
+		if (usleep(3000) == 0 && --retry < 0)
+		{
+			if(g_infobox.msg[g_infobox.index] && g_infobox.bit >= 0)
+				send_char();
+			else
+				break;
+		};
+	return (0);
 }
