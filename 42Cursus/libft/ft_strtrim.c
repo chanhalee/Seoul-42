@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanhale <chanhale@student.42seoul.kr      +#+  +:+       +#+        */
+/*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:10:28 by chanhale          #+#    #+#             */
-/*   Updated: 2021/12/30 21:38:18 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/04/13 11:19:11 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 static int	sub_func(char const *s1, char const *set, char **result, int *g_s)
 {
-	char const	*iter_set;
 	int			size;
 
-	iter_set = set;
 	size = 0;
 	while (s1[size++])
 		;

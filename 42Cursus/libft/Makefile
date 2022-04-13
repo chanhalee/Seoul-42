@@ -55,7 +55,7 @@ SRCS_BONUS	=	$(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BONUS)))
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 
-AR			=	ar crs
+AR			=	ar crus
 RM			=	rm -f
 
 .c.o:		$(SRCS) $(SRCS_BONUS)
