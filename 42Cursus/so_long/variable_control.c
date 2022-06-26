@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:12:54 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/24 21:19:39 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/26 23:22:27 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,66 +18,66 @@ void	init_map(t_map *map)
 	map->size_y = 0;
 	map->enemies = NULL;
 	map->obstacles = NULL;
+	map->collectibles = NULL;
+	map->exits = NULL;
 	map->user.pos.next = NULL;
 	map->user.pos.x = 0;
 	map->user.pos.y = 0;
 	map->user.state = 0;
 }
 
-t_pos	*forge_ememy(int pos_x, int pos_y, t_map *map)
+t_pos	*forge_ememy(size_t pos_x, size_t pos_y, t_map *map)
 {
 	t_pos	*ret;
-	t_pos	**temp_pos;
 
 	ret = (t_pos *)malloc(sizeof(t_pos));
 	if (!ret)
-		emergency_exit(map, 1);
-	ret->next = NULL;
+		emergency_exit(map, TYPE_ERR_CODE_MALLOC);
+	ret->next = map->enemies;
 	ret->x = pos_x;
 	ret->y = pos_y;
-	temp_pos = &(map->enemies);
-	while (*temp_pos)
-		temp_pos = &((*temp_pos)->next);
-	*temp_pos = ret;
+	map->enemies = ret;
 	return (ret);
 }
 
-t_pos	*forge_obstacle(int pos_x, int pos_y, t_map *map)
+t_pos	*forge_obstacle(size_t pos_x, size_t pos_y, t_map *map)
 {
 	t_pos	*ret;
-	t_pos	**temp_pos;
 
 	ret = (t_pos *)malloc(sizeof(t_pos));
 	if (!ret)
-		emergency_exit(map, 1);
-	ret->next = NULL;
+		emergency_exit(map, TYPE_ERR_CODE_MALLOC);
+	ret->next = map->obstacles;
 	ret->x = pos_x;
 	ret->y = pos_y;
-	temp_pos = &(map->obstacles);
-	while (*temp_pos)
-		temp_pos = &((*temp_pos)->next);
-	*temp_pos = ret;
+	map->obstacles = ret;
 	return (ret);
 }
 
-void	emergency_exit(t_map *map, int exit_code)
+t_pos	*forge_collectibles(size_t pos_x, size_t pos_y, t_map *map)
 {
-	t_pos	*temp_pos;
+	t_pos	*ret;
 
-	if (map)
-	{
-		while (map->enemies)
-		{
-			temp_pos = map->enemies->next;
-			free (map->enemies);
-			map->enemies = temp_pos;
-		}
-		while (map->obstacles)
-		{
-			temp_pos = map->obstacles->next;
-			free (map->obstacles);
-			map->obstacles = temp_pos;
-		}
-	}
-	exit(exit_code);
+	ret = (t_pos *)malloc(sizeof(t_pos));
+	if (!ret)
+		emergency_exit(map, TYPE_ERR_CODE_MALLOC);
+	ret->next = map->collectibles;
+	ret->x = pos_x;
+	ret->y = pos_y;
+	map->collectibles = ret;
+	return (ret);
+}
+
+t_pos	*forge_exit(size_t pos_x, size_t pos_y, t_map *map)
+{
+	t_pos	*ret;
+
+	ret = (t_pos *)malloc(sizeof(t_pos));
+	if (!ret)
+		emergency_exit(map, TYPE_ERR_CODE_MALLOC);
+	ret->next = map->exits;
+	ret->x = pos_x;
+	ret->y = pos_y;
+	map->exits = ret;
+	return (ret);
 }
