@@ -58,5 +58,6 @@ t_pos		*forge_obstacle(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_ememy(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_exit(size_t pos_x, size_t pos_y, t_map *map);
 void		init_map(t_map *map);
+int			check_only_wall_in_line(char *line);
 
 #endif
