@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:24:36 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 16:27:08 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:26:05 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	iter;
 
 	iter = 0;
-	while (s[iter])
+	while (s[iter] && s[iter] != '\n')
 		iter++;
 	return (iter);
 }

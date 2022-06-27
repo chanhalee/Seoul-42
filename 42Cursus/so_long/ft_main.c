@@ -2,9 +2,8 @@
 
 int main(int argc, char **argv)
 {
-	t_map	*map;
-	map = get_empty_map();
-	parse_map(argv[1], map);
-	printf("%zu\n", map->size_x);
+	t_map	map;
+	init_map(&map);
+	parse_map(argv[1], &map);
 	return (0);
 }

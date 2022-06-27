@@ -6,19 +6,18 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:12:54 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 16:59:25 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:27:37 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-t_map	*get_empty_map(void)
+t_map	init_map(t_map *map)
 {
-	t_map *map;
-
-	map = (t_map *)malloc(sizeof(t_map *));
 	map->size_x = 0;
 	map->size_y = 0;
+	map->movement_count = 0;
+	map->collecible_count = 0;
 	map->enemies = NULL;
 	map->obstacles = NULL;
 	map->collectibles = NULL;
@@ -27,7 +26,6 @@ t_map	*get_empty_map(void)
 	map->user.pos.x = 0;
 	map->user.pos.y = 0;
 	map->user.state = 0;
-	return (map);
 }
 
 t_pos	*forge_ememy(size_t pos_x, size_t pos_y, t_map *map)
@@ -40,6 +38,7 @@ t_pos	*forge_ememy(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->enemies;
 	ret->x = pos_x;
 	ret->y = pos_y;
+	ret->state = 0;
 	map->enemies = ret;
 	return (ret);
 }
@@ -54,6 +53,7 @@ t_pos	*forge_obstacle(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->obstacles;
 	ret->x = pos_x;
 	ret->y = pos_y;
+	ret->state = 0;
 	map->obstacles = ret;
 	return (ret);
 }
@@ -68,7 +68,9 @@ t_pos	*forge_collectibles(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->collectibles;
 	ret->x = pos_x;
 	ret->y = pos_y;
+	ret->state = 0;
 	map->collectibles = ret;
+	(map->collecible_count)++;
 	return (ret);
 }
 
@@ -82,6 +84,7 @@ t_pos	*forge_exit(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->exits;
 	ret->x = pos_x;
 	ret->y = pos_y;
+	ret->state = 0;
 	map->exits = ret;
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:47:48 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 16:55:16 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:42:26 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,38 @@ void	printmap(t_map *map)
 	printf("obstacles:\n");
 	temp = map->obstacles;
 	counter = 0;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
-		printf("[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
+		printf("obstacles[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
 		temp = temp->next;
 		counter++;
 	}
 	printf("enemies:\n");
 	temp = map->enemies;
 	counter = 0;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
-		printf("[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
+		printf("enemies[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
 		temp = temp->next;
 		counter++;
 	}
 	printf("exits:\n");
 	temp = map->exits;
 	counter = 0;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
-		printf("[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
+		printf("exits[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
 		temp = temp->next;
 		counter++;
-	temp = map->collectibles;
 	}
+	printf("collectibles:\n");
+	temp = map->collectibles;
+	counter = 0;
+	while (temp != NULL)
+	{
+		printf("exits[%d] x:%zu y:%zu\n", counter, temp->x, temp->y);
+		temp = temp->next;
+		counter++;
+	}
+	printf("==================\n\n");
 }
