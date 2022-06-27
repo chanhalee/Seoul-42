@@ -6,13 +6,13 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:12:54 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 19:27:37 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:40:52 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-t_map	init_map(t_map *map)
+void	init_map(t_map *map)
 {
 	map->size_x = 0;
 	map->size_y = 0;

@@ -10,6 +10,7 @@
 # define TYPE_ERR_CODE_MALLOC 1
 # define TYPE_ERR_CODE_FILE 2
 # define TYPE_ERR_CODE_MAP 3
+# define TYPE_ERR_CODE_MLX 3
 # define TYPE_NEW_LINE 1
 # define TYPE_NULL 0
 # define TYPE_OBJECT_STATE_COLLECTED 1
@@ -71,10 +72,10 @@ t_pos		*forge_collectibles(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_obstacle(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_ememy(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_exit(size_t pos_x, size_t pos_y, t_map *map);
-t_map		init_map(t_map *map);
+void		init_map(t_map *map);
 void		parse_map(char *file_name, t_map *map);
 int			check_only_wall_in_line(char *line);
-int	move_position(t_map* map, int move);
-void	printmap(t_map *map);
+int			move_position(t_map* map, int move);
+void		printmap(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:16:27 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 17:44:07 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:37:59 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,9 @@ void	print_error_and_exit(int exit_code)
 		write(2, "Error\nFile error\n", 17);
 	if (exit_code == TYPE_ERR_CODE_MAP)
 		write(2, "Error\nMap error\n", 16);
+	if (exit_code == TYPE_ERR_CODE_MAP)
+		write(2, "Error\nMap error\n", 16);
+	if (exit_code == TYPE_ERR_CODE_MLX)
+		write(2, "Error\nMLX error\n", 16);
 	exit(exit_code);
 }
