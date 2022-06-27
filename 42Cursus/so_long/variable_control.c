@@ -6,14 +6,17 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:12:54 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/26 23:22:27 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:59:25 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-void	init_map(t_map *map)
+t_map	*get_empty_map(void)
 {
+	t_map *map;
+
+	map = (t_map *)malloc(sizeof(t_map *));
 	map->size_x = 0;
 	map->size_y = 0;
 	map->enemies = NULL;
@@ -24,6 +27,7 @@ void	init_map(t_map *map)
 	map->user.pos.x = 0;
 	map->user.pos.y = 0;
 	map->user.state = 0;
+	return (map);
 }
 
 t_pos	*forge_ememy(size_t pos_x, size_t pos_y, t_map *map)

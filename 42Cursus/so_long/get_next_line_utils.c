@@ -6,11 +6,11 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:09:52 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/26 22:43:34 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:27:07 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../so_long.h"
+# include "./so_long.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

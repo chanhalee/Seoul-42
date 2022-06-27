@@ -1,10 +1,10 @@
-#include <mlx.h>
+#include "./so_long.h"
 
 int main(int argc, char **argv)
 {
-    void *mlx;
-    if(argc < 2)
-        return (0);
-
-    mlx = mlx_init();
+	t_map	*map;
+	map = get_empty_map();
+	parse_map(argv[1], map);
+	printf("%zu\n", map->size_x);
+	return (0);
 }

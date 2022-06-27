@@ -3,6 +3,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <fcntl.h>
 
 #  define BUFFER_SIZE 99
@@ -43,12 +44,6 @@ typedef struct s_map
 	struct s_pos		*exits;
 } t_map;
 
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-int			ft_my_strlen(const char *s, t_length *result);
-char		*ft_strjoin(char const *s1, char const *s2);
-void		*ft_memset(void *b, int c, size_t len);
-int			read_data_subsidiary(int fd, char **pending, char **buffer);
-char		*read_data(int fd, char **pending, char *buffer);
 char		*get_next_line(int fd);
 void		emergency_exit(t_map *map, int exit_code);
 void		print_error_and_exit(int exit_code);
@@ -57,7 +52,11 @@ t_pos		*forge_collectibles(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_obstacle(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_ememy(size_t pos_x, size_t pos_y, t_map *map);
 t_pos		*forge_exit(size_t pos_x, size_t pos_y, t_map *map);
-void		init_map(t_map *map);
+t_map		*get_empty_map(void);
+void		parse_map(char *file_name, t_map *map);
+void		parse_line(char *line, t_map *map, size_t pos_y);
+void		parse_block(char block, t_map *map, size_t pos_x, size_t pos_y);
 int			check_only_wall_in_line(char *line);
+void	printmap(t_map *map);
 
 #endif
