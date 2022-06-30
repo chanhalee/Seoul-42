@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:45:55 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 19:37:40 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 03:15:03 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void parse_map(char *file_name, t_map *map)
 	char		*next_line;
 	char		*prev_line;
 	size_t		pos_y;
-	char		buff;
 
 	prev_line = NULL;
 	pos_y = 0;

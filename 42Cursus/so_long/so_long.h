@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include "./mlx/mlx.h"
 
 #  define BUFFER_SIZE 99
 # define TYPE_ERR_CODE_MALLOC 1
@@ -43,6 +44,29 @@ typedef struct s_user_state
 	struct s_pos	pos;
 } t_user_state;
 
+typedef struct s_mlx_data
+{
+	void 	*mlx;
+	void	*win;
+	void	*run0;
+	void	*run1;
+	void	*run2;
+	void	*run3;
+	void	*run4;
+	void	*run5;
+	void	*idle0;
+	void	*idle1;
+	void	*idle2;
+	void	*idle3;
+	void	*idle4;
+	void	*idle5;
+	void	*grass;
+	void	*exit_open;
+	void	*chest_open;
+	void	*chest_closed;
+	void	*wall;
+} t_mlx_data;
+
 
 typedef struct s_map
 {
@@ -77,5 +101,6 @@ void		parse_map(char *file_name, t_map *map);
 int			check_only_wall_in_line(char *line);
 int			move_position(t_map* map, int move);
 void		printmap(t_map *map);
+void	mlx_asset_init(t_mlx_data *mlx_data);
 
 #endif
