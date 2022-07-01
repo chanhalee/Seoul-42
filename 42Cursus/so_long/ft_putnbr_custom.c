@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 11:24:36 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 18:29:03 by chanhale         ###   ########.fr       */
+/*   Created: 2022/07/01 16:26:09 by chanhale          #+#    #+#             */
+/*   Updated: 2022/07/01 16:26:26 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putnbr_custom(int n)
 {
-	size_t	iter;
+	char	c;
 
-	iter = 0;
-	while (s[iter] && s[iter] != '\n')
-		iter++;
-	return (iter);
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		c = 48 + (n % 10) * -1;
+		if ((n / 10) * -1 > 0)
+			ft_putnbr_custom((n / 10) * -1);
+		write(1, &c, 1);
+	}
+	else
+	{
+		if (n >= 10)
+			ft_putnbr_custom(n / 10);
+		c = 48 + n % 10;
+		write(1, &c, 1);
+	}
 }

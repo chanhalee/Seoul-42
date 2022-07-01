@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:16:27 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 21:37:59 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:27:53 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ void	emergency_exit(t_map *map, int exit_code)
 
 	if (!map)
 		print_error_and_exit(exit_code);
-	while (map->enemies)
-	{
-		temp_pos = map->enemies->next;
-		free (map->enemies);
-		map->enemies = temp_pos;
-	}
 	while (map->obstacles)
 	{
 		temp_pos = map->obstacles->next;

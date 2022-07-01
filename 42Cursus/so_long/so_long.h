@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 18:35:16 by chanhale          #+#    #+#             */
+/*   Updated: 2022/07/01 19:10:52 by chanhale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -7,25 +19,31 @@
 # include <fcntl.h>
 # include "./mlx/mlx.h"
 
-#  define BUFFER_SIZE 99
+# define BUFFER_SIZE 99
 # define TYPE_ERR_CODE_MALLOC 1
 # define TYPE_ERR_CODE_FILE 2
 # define TYPE_ERR_CODE_MAP 3
 # define TYPE_ERR_CODE_MLX 3
+# define TYPE_CLEAN_QUIT 0
 # define TYPE_NEW_LINE 1
 # define TYPE_NULL 0
 # define TYPE_TRUE 1
 # define TYPE_FALSE 0
-# define TYPE_OBJECT_STATE_INITIAL 1
+# define TYPE_OBJECT_STATE_INITIAL 0
 # define TYPE_OBJECT_STATE_COLLECTED 1
-# define TYPE_MOVE_UP 10
-# define TYPE_MOVE_LEFT 20
-# define TYPE_MOVE_RIGHT 30
-# define TYPE_MOVE_DOWN 40
+# define TYPE_MOVE_UP 13
+# define TYPE_MOVE_LEFT 0
+# define TYPE_MOVE_RIGHT 2
+# define TYPE_MOVE_DOWN 1
 # define TYPE_RESULT_CAUGHT 100
 # define TYPE_RESULT_BLOCKED 200
 # define TYPE_RESULT_MOVED 300
 # define TYPE_RESULT_COLLECTED 400
+# define TYPE_KEY_A 0
+# define TYPE_KEY_S 1
+# define TYPE_KEY_D 2
+# define TYPE_KEY_W 13
+# define TYPE_KEY_ESC 53
 
 typedef struct s_length
 {
@@ -39,37 +57,13 @@ typedef struct s_pos
 	size_t			y;
 	int				state;
 	struct s_pos	*next;
-} t_pos;
+}	t_pos;
 
 typedef struct s_user_state
 {
 	int				state;
 	struct s_pos	pos;
-} t_user_state;
-
-typedef struct s_mlx_data
-{
-	void 	*mlx;
-	void	*win;
-	void	*run0;
-	void	*run1;
-	void	*run2;
-	void	*run3;
-	void	*run4;
-	void	*run5;
-	void	*idle0;
-	void	*idle1;
-	void	*idle2;
-	void	*idle3;
-	void	*idle4;
-	void	*idle5;
-	void	*grass;
-	void	*exit_open;
-	void	*chest_open;
-	void	*chest_closed;
-	void	*wall;
-} t_mlx_data;
-
+}	t_user_state;
 
 typedef struct s_map
 {
@@ -82,8 +76,31 @@ typedef struct s_map
 	struct s_pos		*enemies;
 	struct s_pos		*collectibles;
 	struct s_pos		*exits;
-} t_map;
+}	t_map;
 
+typedef struct s_mlx_data
+{
+	void			*mlx;
+	void			*win;
+	void			*run0;
+	void			*run1;
+	void			*run2;
+	void			*run3;
+	void			*run4;
+	void			*run5;
+	void			*idle0;
+	void			*idle1;
+	void			*idle2;
+	void			*idle3;
+	void			*idle4;
+	void			*idle5;
+	void			*grass;
+	void			*exit;
+	void			*c_open;
+	void			*c_closed;
+	void			*wall;
+	struct s_map	map;
+}	t_mlx_data;
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_my_strlen(const char *s, t_length *result);
@@ -102,10 +119,13 @@ t_pos		*forge_exit(size_t pos_x, size_t pos_y, t_map *map);
 void		init_map(t_map *map);
 void		parse_map(char *file_name, t_map *map);
 int			check_only_wall_in_line(char *line);
-int check_matching_entry(t_pos *entry, int x, int y);
-int			move_position(t_map* map, int move);
+int			check_matching_entry(t_pos *entry, size_t x, size_t y);
+t_pos		move_position(t_map *map, int move);
 void		printmap(t_map *map);
-void	mlx_asset_init(t_mlx_data *mlx_data);
-void	mlx_make_rander(t_mlx_data *mlx, t_map *map);
+void		mlx_asset_init(t_mlx_data *mlx_data);
+void		mlx_make_render(t_mlx_data *mlx);
+int			mlx_key_input(int keycode, t_mlx_data *mlx);
+void		ft_putnbr_custom(int n);
+int			mlx_cleanup(t_mlx_data *mlx);
 
 #endif

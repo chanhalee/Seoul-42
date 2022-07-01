@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 11:24:36 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 18:29:03 by chanhale         ###   ########.fr       */
+/*   Created: 2022/07/01 17:05:56 by chanhale          #+#    #+#             */
+/*   Updated: 2022/07/01 18:27:20 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include"./so_long.h"
 
-size_t	ft_strlen(const char *s)
+int	mlx_cleanup(t_mlx_data *mlx)
 {
-	size_t	iter;
-
-	iter = 0;
-	while (s[iter] && s[iter] != '\n')
-		iter++;
-	return (iter);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	emergency_exit(&(mlx->map), 0);
+	return (0);
 }

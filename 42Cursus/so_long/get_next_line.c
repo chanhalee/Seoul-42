@@ -6,11 +6,11 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:10:02 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 17:57:24 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:29:22 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./so_long.h"
+#include "./so_long.h"
 
 char	*get_next_line(int fd)
 {

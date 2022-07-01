@@ -6,26 +6,25 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:45:55 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 03:15:03 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:46:19 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./so_long.h"
+#include "./so_long.h"
 
-void	validate_map(t_map *map);
+void	parse_map_subsidiary(t_map *map, char *prev_line,
+			char *next_line, int fd);
 void	parse_line(char *line, t_map *map, size_t pos_y);
 void	parse_block(char block, t_map *map, size_t pos_x, size_t pos_y);
 
-void parse_map(char *file_name, t_map *map)
+void	parse_map(char *file_name, t_map *map)
 {
 	int			fd;
 	char		*next_line;
 	char		*prev_line;
-	size_t		pos_y;
 
 	prev_line = NULL;
-	pos_y = 0;
-    fd = open(file_name, O_RDONLY);
+	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		emergency_exit(map, TYPE_ERR_CODE_FILE);
 	next_line = get_next_line(fd);
@@ -36,7 +35,16 @@ void parse_map(char *file_name, t_map *map)
 		emergency_exit(map, TYPE_ERR_CODE_MAP);
 	if (check_only_wall_in_line(next_line) != 0)
 		emergency_exit(map, TYPE_ERR_CODE_MAP);
-	while (next_line) // 각 라인 0번째는 wall
+	parse_map_subsidiary(map, prev_line, next_line, fd);
+}
+
+void	parse_map_subsidiary(t_map *map, char *prev_line,
+		char *next_line, int fd)
+{
+	size_t	pos_y;
+
+	pos_y = 0;
+	while (next_line)
 	{
 		if (ft_strlen(next_line) != map->size_x)
 			emergency_exit(map, TYPE_ERR_CODE_MAP);
@@ -51,7 +59,9 @@ void parse_map(char *file_name, t_map *map)
 		emergency_exit(map, TYPE_ERR_CODE_MAP);
 	if (prev_line)
 		free(prev_line);
-	validate_map(map);
+	if (map->collectibles == NULL || map->exits == NULL || map->user.pos.x == 0
+		|| map->size_x < 3 || map -> size_y < 3)
+		emergency_exit(map, TYPE_ERR_CODE_MAP);
 }
 
 void	parse_line(char *line, t_map *map, size_t pos_y)
@@ -60,15 +70,13 @@ void	parse_line(char *line, t_map *map, size_t pos_y)
 
 	pos_x = 0;
 	(map->size_y)++;
-	if(*line != '1')
+	if (*line != '1')
 		emergency_exit(map, TYPE_ERR_CODE_MAP);
-	printf("\n-\n%s-\n", line);
 	while (line[pos_x] != '\0' && line[pos_x] != '\n')
 	{
 		parse_block(line[pos_x], map, pos_x, pos_y);
 		pos_x++;
 	}
-	printmap(map);
 	if (line[pos_x - 1] != '1')
 		emergency_exit(map, TYPE_ERR_CODE_MAP);
 }
@@ -88,12 +96,4 @@ void	parse_block(char block, t_map *map, size_t pos_x, size_t pos_y)
 	}
 	else if (block != '0')
 		emergency_exit(map, TYPE_ERR_CODE_MAP);
-}
-
-void	validate_map(t_map *map)
-{
-	if (map->collectibles == NULL || map->exits == NULL || map->user.pos.x == 0
-		|| map->size_x < 3 || map -> size_y < 3)
-		emergency_exit(map, TYPE_ERR_CODE_MAP);
-	
 }
