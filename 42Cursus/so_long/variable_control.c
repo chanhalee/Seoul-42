@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:12:54 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 21:40:52 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 11:44:03 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_pos	*forge_ememy(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->enemies;
 	ret->x = pos_x;
 	ret->y = pos_y;
-	ret->state = 0;
+	ret->state = TYPE_OBJECT_STATE_INITIAL;
 	map->enemies = ret;
 	return (ret);
 }
@@ -53,7 +53,7 @@ t_pos	*forge_obstacle(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->obstacles;
 	ret->x = pos_x;
 	ret->y = pos_y;
-	ret->state = 0;
+	ret->state = TYPE_OBJECT_STATE_INITIAL;
 	map->obstacles = ret;
 	return (ret);
 }
@@ -68,7 +68,7 @@ t_pos	*forge_collectibles(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->collectibles;
 	ret->x = pos_x;
 	ret->y = pos_y;
-	ret->state = 0;
+	ret->state = TYPE_OBJECT_STATE_INITIAL;
 	map->collectibles = ret;
 	(map->collecible_count)++;
 	return (ret);
@@ -84,7 +84,7 @@ t_pos	*forge_exit(size_t pos_x, size_t pos_y, t_map *map)
 	ret->next = map->exits;
 	ret->x = pos_x;
 	ret->y = pos_y;
-	ret->state = 0;
+	ret->state = TYPE_OBJECT_STATE_INITIAL;
 	map->exits = ret;
 	return (ret);
 }

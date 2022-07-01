@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:34:37 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 03:20:20 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 12:04:30 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,30 @@ void	mlx_asset_init(t_mlx_data *mlx_data)
 	mlx_data->grass = mlx_xpm_file_to_image(mlx_data->mlx, "./images/tile/grass.xpm", &img_w, &img_h);
 	mlx_data->chest_open = mlx_xpm_file_to_image(mlx_data->mlx, "./images/tile/chest_open.xpm", &img_w, &img_h);
 	mlx_data->chest_closed = mlx_xpm_file_to_image(mlx_data->mlx, "./images/tile/chest_closed.xpm", &img_w, &img_h);
+}
+
+void	mlx_make_rander(t_mlx_data *mlx, t_map *map)
+{
+	size_t	idx_x;
+	size_t	idx_y;
+
+	idx_y = 0;
+	while (idx_y < map->size_y)
+	{
+		idx_x = 0;
+		while (idx_x < map->size_x)
+		{
+			mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->grass, 16 * idx_x, 16 * idx_y);
+			if (check_matching_entry(map->obstacles, idx_x, idx_y) == TYPE_TRUE)
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->wall, 16 * idx_x, 16 * idx_y);
+			else if (check_matching_entry(map->collectibles, idx_x, idx_y) == TYPE_TRUE)
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->chest_closed, 16 * idx_x, 16 * idx_y);
+			else if (check_matching_entry(map->exits, idx_x, idx_y) == TYPE_TRUE)
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->exit_open, 16 * idx_x, 16 * idx_y);
+			else if (map->user.pos.x == idx_x && map->user.pos.y == idx_y)
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->idle0, 16 * idx_x, 16 * idx_y);
+			idx_x++;
+		}
+		idx_y++;
+	}
 }

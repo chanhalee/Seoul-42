@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:47:48 by chanhale          #+#    #+#             */
-/*   Updated: 2022/06/27 18:42:26 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 11:59:58 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ int	check_only_wall_in_line(char *line)
 		index++;
 	}
 	return (0);
+}
+
+int check_matching_entry(t_pos *entry, int x, int y)
+{
+	t_pos	*next;
+
+	next = entry;
+	while (next != NULL)
+	{
+		if (next->x == x && next->y == y && next->state == TYPE_OBJECT_STATE_INITIAL)
+			return (TYPE_TRUE);
+		next = next ->next;
+	}
+	return (TYPE_FALSE);
 }
 
 

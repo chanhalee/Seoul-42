@@ -13,13 +13,9 @@ int main(int argc, char **argv)
 	init_map(&map);
 	parse_map(argv[1], &map);
 
-	mlx_data.win = mlx_new_window(mlx_data.mlx, 500, 500, "Hello world!");
+	mlx_data.win = mlx_new_window(mlx_data.mlx, 16 * map.size_x, 16 * map.size_y, "Hello world!");
 	mlx_asset_init(&mlx_data);
-	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.grass, 0, 0);
-	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.grass, 16, 0);
-	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.grass, 0, 16);
-	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.grass, 16, 16);
+	mlx_make_rander(&mlx_data, &map);
 	mlx_loop(mlx_data.mlx);
 	return (0);
 }
-//gcc -lmlx -framework OpenGl ㅊㄹ52ㄹ2ㄹ2

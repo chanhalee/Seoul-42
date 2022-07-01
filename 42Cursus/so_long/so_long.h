@@ -14,6 +14,9 @@
 # define TYPE_ERR_CODE_MLX 3
 # define TYPE_NEW_LINE 1
 # define TYPE_NULL 0
+# define TYPE_TRUE 1
+# define TYPE_FALSE 0
+# define TYPE_OBJECT_STATE_INITIAL 1
 # define TYPE_OBJECT_STATE_COLLECTED 1
 # define TYPE_MOVE_UP 10
 # define TYPE_MOVE_LEFT 20
@@ -99,8 +102,10 @@ t_pos		*forge_exit(size_t pos_x, size_t pos_y, t_map *map);
 void		init_map(t_map *map);
 void		parse_map(char *file_name, t_map *map);
 int			check_only_wall_in_line(char *line);
+int check_matching_entry(t_pos *entry, int x, int y);
 int			move_position(t_map* map, int move);
 void		printmap(t_map *map);
 void	mlx_asset_init(t_mlx_data *mlx_data);
+void	mlx_make_rander(t_mlx_data *mlx, t_map *map);
 
 #endif
