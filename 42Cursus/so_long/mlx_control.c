@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:34:37 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 18:24:56 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 20:19:37 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,14 @@ void	mlx_asset_init(t_mlx_data *mlx_data)
 	int		img_h;
 	int		img_w;
 
-	mlx_data->idle0 = mlx_xpm_file_to_image(mlx_data->mlx,
-			"./images/knight/idle/idle0.xpm", &img_w, &img_h);
-	mlx_data->idle1 = mlx_xpm_file_to_image(mlx_data->mlx,
-			"./images/knight/idle/idle1.xpm", &img_w, &img_h);
-	mlx_data->idle2 = mlx_xpm_file_to_image(mlx_data->mlx,
-			"./images/knight/idle/idle2.xpm", &img_w, &img_h);
-	mlx_data->idle3 = mlx_xpm_file_to_image(mlx_data->mlx,
-			"./images/knight/idle/idle3.xpm", &img_w, &img_h);
-	mlx_data->idle4 = mlx_xpm_file_to_image(mlx_data->mlx,
-			"./images/knight/idle/idle4.xpm", &img_w, &img_h);
-	mlx_data->idle5 = mlx_xpm_file_to_image(mlx_data->mlx,
-			"./images/knight/idle/idle5.xpm", &img_w, &img_h);
+	mlx_data->idle_down = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/knight/idle/idle_down.xpm", &img_w, &img_h);
+	mlx_data->idle_up = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/knight/idle/idle_up.xpm", &img_w, &img_h);
+	mlx_data->idle_left = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/knight/idle/idle_left.xpm", &img_w, &img_h);
+	mlx_data->idle_right = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/knight/idle/idle_right.xpm", &img_w, &img_h);
 	mlx_data->run0 = mlx_xpm_file_to_image(mlx_data->mlx,
 			"./images/knight/run/run0.xpm", &img_w, &img_h);
 	mlx_asset_init_sub(mlx_data);
@@ -97,5 +93,5 @@ void	mlx_make_render_sub(t_mlx_data *mlx, size_t x, size_t y)
 	else if (check_matching_entry(mlx->map.exits, x, y) == TYPE_TRUE)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->exit, p_x, p_y);
 	else if (mlx->map.user.pos.x == x && mlx->map.user.pos.y == y)
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->idle0, p_x, p_y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->idle_down, p_x, p_y);
 }

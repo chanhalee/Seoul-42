@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 18:35:16 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 19:10:52 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/01 20:30:34 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include "./mlx/mlx.h"
 
@@ -88,12 +87,10 @@ typedef struct s_mlx_data
 	void			*run3;
 	void			*run4;
 	void			*run5;
-	void			*idle0;
-	void			*idle1;
-	void			*idle2;
-	void			*idle3;
-	void			*idle4;
-	void			*idle5;
+	void			*idle_down;
+	void			*idle_up;
+	void			*idle_left;
+	void			*idle_right;
 	void			*grass;
 	void			*exit;
 	void			*c_open;
@@ -121,10 +118,11 @@ void		parse_map(char *file_name, t_map *map);
 int			check_only_wall_in_line(char *line);
 int			check_matching_entry(t_pos *entry, size_t x, size_t y);
 t_pos		move_position(t_map *map, int move);
-void		printmap(t_map *map);
 void		mlx_asset_init(t_mlx_data *mlx_data);
 void		mlx_make_render(t_mlx_data *mlx);
-int			mlx_key_input(int keycode, t_mlx_data *mlx);
+int			mlx_key_up(int keycode, t_mlx_data *mlx);
+int			mlx_key_down(int keycode, t_mlx_data *mlx);
+void		mlx_set_user_img(t_mlx_data *mlx);
 void		ft_putnbr_custom(int n);
 int			mlx_cleanup(t_mlx_data *mlx);
 
