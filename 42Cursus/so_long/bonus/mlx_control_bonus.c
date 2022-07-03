@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_control.c                                      :+:      :+:    :+:   */
+/*   mlx_control_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:34:37 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/03 20:30:55 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/03 21:32:17 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./so_long_bonus.h"
 
 void	mlx_asset_init_sub(t_mlx_data *mlx_data);
 void	mlx_make_render_sub(t_mlx_data *mlx, size_t x, size_t y);
@@ -20,6 +20,14 @@ void	mlx_asset_init(t_mlx_data *mlx_data)
 	int		img_h;
 	int		img_w;
 
+	mlx_data->enemy_down = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/enemy/enemy_down.xpm", &img_w, &img_h);
+	mlx_data->enemy_up = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/enemy/enemy_up.xpm", &img_w, &img_h);
+	mlx_data->enemy_left = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/enemy/enemy_left.xpm", &img_w, &img_h);
+	mlx_data->enemy_right = mlx_xpm_file_to_image(mlx_data->mlx,
+			"./images/enemy/enemy_right.xpm", &img_w, &img_h);
 	mlx_data->idle_down = mlx_xpm_file_to_image(mlx_data->mlx,
 			"./images/knight/idle/idle_down.xpm", &img_w, &img_h);
 	mlx_data->idle_up = mlx_xpm_file_to_image(mlx_data->mlx,
@@ -92,6 +100,8 @@ void	mlx_make_render_sub(t_mlx_data *mlx, size_t x, size_t y)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->c_closed, p_x, p_y);
 	else if (check_matching_entry(mlx->map.exits, x, y) == TYPE_TRUE)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->exit, p_x, p_y);
+	else if (check_matching_entry(mlx->map.enemies, x, y) == TYPE_TRUE)
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->enemy_down, p_x, p_y);
 	else if (mlx->map.user.pos.x == x && mlx->map.user.pos.y == y)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->idle_down, p_x, p_y);
 }
