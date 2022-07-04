@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 18:35:16 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 20:37:24 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:39:57 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define TYPE_ERR_CODE_MALLOC 1
 # define TYPE_ERR_CODE_FILE 2
 # define TYPE_ERR_CODE_MAP 3
-# define TYPE_ERR_CODE_MLX 3
+# define TYPE_ERR_CODE_MLX 4
 # define TYPE_CLEAN_QUIT 0
 # define TYPE_NEW_LINE 1
 # define TYPE_NULL 0

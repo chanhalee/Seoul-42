@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:16:27 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/01 18:27:53 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:40:25 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	print_error_and_exit(int exit_code)
 		write(2, "Error\nMalloc error\n", 19);
 	if (exit_code == TYPE_ERR_CODE_FILE)
 		write(2, "Error\nFile error\n", 17);
-	if (exit_code == TYPE_ERR_CODE_MAP)
-		write(2, "Error\nMap error\n", 16);
 	if (exit_code == TYPE_ERR_CODE_MAP)
 		write(2, "Error\nMap error\n", 16);
 	if (exit_code == TYPE_ERR_CODE_MLX)
