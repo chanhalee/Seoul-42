@@ -40,7 +40,7 @@ RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
 .c.o:		$(SRCS)
-			$(CC) $(CFLAGS) -c -o $@ $<
+			arch -x86_64 $(CC) $(CFLAGS) -c -o $@ $<
 
 all:		$(NAME)
 
