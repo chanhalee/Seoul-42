@@ -1,5 +1,5 @@
-#ifndef PHILOSOPHER_H
-# define PHILOSOPHER_H
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -17,12 +17,12 @@
 
 typedef struct s_philosopher
 {
+	int						number;
 	pthread_mutex_t			l_fork;
 	pthread_mutex_t			*r_fork;
 	pthread_mutex_t			*permission_to_speak;
-	int						last_eat;
 	int						state;
-	int						number;
+	int						last_eat;
 	int						eat_count;
 	struct s_philosopher	*next;
 	struct s_philosopher	*prev;
@@ -40,9 +40,10 @@ typedef struct s_bigbro
 	int						mandatory_eat_count;
 }	t_bigbro;
 
-int		ft_atoi(char *str);
-int		init_system(t_bigbro *big_bro, char **argv);
-int 	create_philosophers(t_bigbro *bigbro);
-int		free_all_philosophers(t_bigbro *bigbro);
+int			ft_atoi(char *str);
+t_bigbro	*init_bigbro_data(t_bigbro *big_bro, char **argv);
+int 		create_philosopher_data(t_bigbro *bigbro);
+int			free_all_philosopher_data(t_bigbro *bigbro);
+void		clear_bigbro_data(t_bigbro *bigbro);
 
 #endif

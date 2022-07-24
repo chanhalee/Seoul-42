@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_philosophers.c                                :+:      :+:    :+:   */
+/*   free_philosopher_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../philosophers.h"
 
-int	free_all_philosophers(t_bigbro *bigbro)
+int	free_all_philosopher_data(t_bigbro *bigbro)
 {
 	t_philosopher *next;
 

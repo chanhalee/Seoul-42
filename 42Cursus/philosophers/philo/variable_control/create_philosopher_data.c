@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_philosophers.c                              :+:      :+:    :+:   */
+/*   create_philosopher_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 17:22:23 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/24 18:43:55 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/24 19:45:22 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	add_empty_philosopher_at_tail_sub(t_bigbro *bigbro, t_philosopher	*ret);
 t_philosopher	*add_empty_philosopher_at_tail(t_bigbro *bigbro, int number);
 
-int create_philosophers(t_bigbro *bigbro)
+int create_philosopher_data(t_bigbro *bigbro)
 {
 	int				counter;
 	t_philosopher	*result;
