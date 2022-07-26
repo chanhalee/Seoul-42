@@ -22,7 +22,7 @@ int	free_all_philosopher_data(t_bigbro *bigbro)
 	bigbro->philosophers_tail->next = NULL;
 	while (next != NULL)
 	{
-		pthread_mutex_destroy(&(next->l_fork));
+		pthread_mutex_destroy(&(next->state_mutex));
 		bigbro->philosophers_head = next->next;
 		free(next);
 		next = bigbro->philosophers_head;

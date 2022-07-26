@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:23:29 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/24 19:47:43 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/26 22:11:33 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	print_bigbro(t_bigbro *bigbro)
 	while (philosopher != bigbro->philosophers_tail)
 	{
 		printf("========phillo[%d]========\n", philosopher->number);
-		printf("last_eat: %d\n", philosopher->last_eat);
+		printf("last_eat: %ld\n", philosopher->last_eat.tv_sec + philosopher->last_eat.tv_usec );
 		printf("state: %d\n", philosopher->state);
 		printf("eat_count: %d\n", philosopher->eat_count);
 		philosopher = philosopher->next;
 	}
 	printf("========phillo[%d]========\n", philosopher->number);
-	printf("last_eat: %d\n", philosopher->last_eat);
+	printf("last_eat: %ld\n", philosopher->last_eat.tv_sec + philosopher->last_eat.tv_usec );
 	printf("state: %d\n", philosopher->state);
 	printf("eat_count: %d\n", philosopher->eat_count);
 	philosopher = philosopher->next;

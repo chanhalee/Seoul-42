@@ -13,17 +13,24 @@
 # define TYPE_STATE_THINK 10
 # define TYPE_STATE_EAT 20
 # define TYPE_STATE_SLEEP 30
+# define TYPE_STATE_DEAD -1
 
 
 typedef struct s_philosopher
 {
+	pthread_t				tid;
 	int						number;
-	pthread_mutex_t			l_fork;
+	pthread_mutex_t			*l_fork;
 	pthread_mutex_t			*r_fork;
 	pthread_mutex_t			*permission_to_speak;
 	int						state;
-	int						last_eat;
+	pthread_mutex_t			state_mutex;
+	struct timeval			last_eat;
+	struct timeval			starting_time;
 	int						eat_count;
+	int						time_to_die;
+	int						time_to_eat;
+	int						time_to_sleep;
 	struct s_philosopher	*next;
 	struct s_philosopher	*prev;
 }	t_philosopher;
@@ -32,6 +39,7 @@ typedef struct s_bigbro
 {
 	struct s_philosopher	*philosophers_head;
 	struct s_philosopher	*philosophers_tail;
+	pthread_mutex_t			*forks;
 	pthread_mutex_t			permission_to_speak;
 	int						number_of_philos;
 	int						time_to_die;
@@ -41,9 +49,21 @@ typedef struct s_bigbro
 }	t_bigbro;
 
 int			ft_atoi(char *str);
-t_bigbro	*init_bigbro_data(t_bigbro *big_bro, char **argv);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+long long	ft_get_time_diff(struct timeval start, struct timeval tv);
+int			philosopher_thread_create(t_bigbro *bigbro);
+void	philosopher_thread_join(t_bigbro *bigbro, int error_ret);
+int			philosopher_thread_main(t_philosopher *philo);
+long long	ft_get_time_gap(struct timeval tv);
+int			init_bigbro_data(t_bigbro *bigbro, char **argv);
 int 		create_philosopher_data(t_bigbro *bigbro);
 int			free_all_philosopher_data(t_bigbro *bigbro);
 void		clear_bigbro_data(t_bigbro *bigbro);
+int			philo_get_state(t_philosopher *philo);
+int			philo_set_state(t_philosopher *philo, int state);
+void	set_starting_time(t_bigbro *bigbro, struct timeval tv);
+void	philo_broadcast_state(t_philosopher *philo, char *str);
+int	philo_terminate(t_philosopher *philo);
+int	check_philo_vital(t_philosopher *philo);
 
 #endif

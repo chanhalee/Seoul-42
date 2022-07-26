@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_bigbro_data.c                                :+:      :+:    :+:   */
+/*   ft_get_time_diff.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 19:18:46 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/26 23:04:32 by chanhale         ###   ########.fr       */
+/*   Created: 2022/07/26 19:52:22 by chanhale          #+#    #+#             */
+/*   Updated: 2022/07/27 00:44:26 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	clear_bigbro_data(t_bigbro *bigbro)
+long long	ft_get_time_diff(struct timeval start, struct timeval tv)
 {
-	int	index;
-	pthread_mutex_destroy(&(bigbro->permission_to_speak));
-	index = -1;
-	while (++index < bigbro->number_of_philos)
-		pthread_mutex_destroy(&(bigbro->forks[index]));
-	free(bigbro->forks);
-	free_all_philosopher_data(bigbro);
+	long long	ret;
+
+	ret = tv.tv_sec - start.tv_sec;
+	ret *= 1000000;
+	ret += tv.tv_usec - start.tv_usec;
+	return (ret);
 }
