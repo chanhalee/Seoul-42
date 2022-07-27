@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 14:12:28 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 14:17:55 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:19:01 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_bigbro
 int			ft_atoi(char *str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			philosopher_thread_create(t_bigbro *bigbro);
-void		philosopher_thread_join(t_bigbro *bigbro, int error_ret);
 int			philosopher_thread_main(t_philosopher *philo);
 long long	ft_get_time_gap(struct timeval tv);
 int			init_bigbro_data(t_bigbro *bigbro, char **argv);

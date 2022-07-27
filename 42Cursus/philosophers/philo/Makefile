@@ -14,7 +14,7 @@ SRCS	=	./bigbro_util.c \
 			./utils/ft_strncmp.c \
 
 OBJS			= $(SRCS:.c=.o)
-CC				= gcc
+CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Werror -Wextra
 

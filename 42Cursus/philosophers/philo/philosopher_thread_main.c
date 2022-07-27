@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 22:34:04 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 15:08:35 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:17:57 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	philosopher_thread_main(t_philosopher *philo)
 	while (philo_get_state(philo) != TYPE_STATE_DEAD)
 	{
 		if (check_philo_vital(philo, 0) == TYPE_STATE_DEAD)
-			return (philo_terminate(philo));
+			return (TYPE_STATE_DEAD);
 		philo_take_fork(philo, 1);
 		if (check_philo_vital(philo, 0) == TYPE_STATE_DEAD)
-			return (philo_terminate(philo));
+			return (TYPE_STATE_DEAD);
 		philo_broadcast_state(philo, "has taken a fork", 0);
 		philo_take_fork(philo, 2);
 		gettimeofday(&tv, NULL);
@@ -41,21 +41,21 @@ int	philosopher_thread_main(t_philosopher *philo)
 		if (inner_ret != 0)
 			return (inner_ret);
 	}
-	return (philo_terminate(philo));
+	return (TYPE_STATE_DEAD);
 }
 
 int	philosopher_thread_main_innerseq(t_philosopher *philo, struct timeval tv)
 {
 	if (check_philo_vital(philo, 0) == TYPE_STATE_DEAD)
-		return (philo_terminate(philo));
+		return (TYPE_STATE_DEAD);
 	philo_broadcast_state(philo, "has taken a fork", 0);
 	philo_broadcast_state(philo, "is eating", 0);
 	if (philo_set_state(philo, TYPE_STATE_EAT) == -1)
 		if (check_philo_vital(philo, 1) == TYPE_STATE_DEAD)
-			return (philo_terminate(philo));
+			return (TYPE_STATE_DEAD);
 	if (check_vital_while_sleep(philo, tv, philo->time_to_eat
 			* 1000) == TYPE_STATE_DEAD)
-		return (philo_terminate(philo));
+		return (TYPE_STATE_DEAD);
 	philo_lose_fork(philo, 1);
 	philo_lose_fork(philo, 2);
 	gettimeofday(&tv, NULL);
@@ -63,7 +63,7 @@ int	philosopher_thread_main_innerseq(t_philosopher *philo, struct timeval tv)
 	philo_broadcast_state(philo, "is sleeping", 0);
 	if (check_vital_while_sleep(philo, tv, philo->time_to_sleep
 			* 1000) == TYPE_STATE_DEAD)
-		return (philo_terminate(philo));
+		return (TYPE_STATE_DEAD);
 	philo_set_state(philo, TYPE_STATE_THINK);
 	return (0);
 }

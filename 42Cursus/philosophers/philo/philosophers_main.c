@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 16:19:06 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 15:03:31 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:09:15 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	if (init_bigbro_data(&bigbro, argv) == -1)
 		return (0);
 	error_ret = philosopher_thread_create(&bigbro);
-	philosopher_thread_join(&bigbro, error_ret);
 	clear_bigbro_data(&bigbro);
 	return (0);
 }
