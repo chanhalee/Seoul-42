@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_philosopher_data.c                                :+:      :+:    :+:   */
+/*   free_philosopher_data.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 18:30:47 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/24 18:41:57 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:59:51 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	free_all_philosopher_data(t_bigbro *bigbro)
 {
-	t_philosopher *next;
+	t_philosopher	*next;
 
 	next = bigbro->philosophers_head;
 	if (bigbro->philosophers_head == NULL)

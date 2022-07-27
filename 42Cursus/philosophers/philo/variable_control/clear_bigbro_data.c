@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:18:46 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/26 23:04:32 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:00:53 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	clear_bigbro_data(t_bigbro *bigbro)
 {
 	int	index;
+
 	pthread_mutex_destroy(&(bigbro->permission_to_speak));
 	index = -1;
 	while (++index < bigbro->number_of_philos)
