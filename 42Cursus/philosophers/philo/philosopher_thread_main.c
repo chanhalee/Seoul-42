@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 22:34:04 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/28 14:54:10 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/28 21:49:45 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,29 @@ void	philo_lose_fork(t_philosopher *philo, int count);
 int		philosopher_thread_main_innerseq(t_philosopher *philo,
 			struct timeval tv);
 
-int	philosopher_thread_main(t_philosopher *philo)
+int	philosopher_thread_main(t_philosopher *ph)
 {
 	struct timeval	tv;
 	int				inner_ret;
 
-	if (philo->number_of_philos == 1)
-		return (single_philo_action(philo));
-	if (philo->number % 2 == 0)
-		check_vital_while_sleep(philo, philo->starting_time, 1000);
-	else if (philo->number_of_philos % 2 == 1 && philo->number != philo->number_of_philos)
-		check_vital_while_sleep(philo, philo->starting_time, 2000);
-	while (philo_get_state(philo) != TYPE_STATE_DEAD)
+	if (ph->number_of_philos == 1)
+		return (single_philo_action(ph));
+	if (ph->number % 2 == 0)
+		check_vital_while_sleep(ph, ph->starting_time, ph->time_to_eat * 500);
+	else if (ph->number_of_philos % 2 == 1 && ph->number
+		!= ph->number_of_philos)
+		check_vital_while_sleep(ph, ph->starting_time, ph->time_to_eat * 1000);
+	while (philo_get_state(ph) != TYPE_STATE_DEAD)
 	{
-		if (check_philo_vital(philo, 0) == TYPE_STATE_DEAD)
+		if (check_philo_vital(ph, 0) == TYPE_STATE_DEAD)
 			return (TYPE_STATE_DEAD);
-		philo_take_fork(philo, 1);
-		if (check_philo_vital(philo, 0) == TYPE_STATE_DEAD)
+		philo_take_fork(ph, 1);
+		if (check_philo_vital(ph, 0) == TYPE_STATE_DEAD)
 			return (TYPE_STATE_DEAD);
-		philo_broadcast_state(philo, "has taken a fork", 0);
-		philo_take_fork(philo, 2);
+		philo_broadcast_state(ph, "has taken a fork", 0);
+		philo_take_fork(ph, 2);
 		gettimeofday(&tv, NULL);
-		inner_ret = philosopher_thread_main_innerseq(philo, tv);
+		inner_ret = philosopher_thread_main_innerseq(ph, tv);
 		if (inner_ret != 0)
 			return (inner_ret);
 	}
@@ -67,6 +68,7 @@ int	philosopher_thread_main_innerseq(t_philosopher *philo, struct timeval tv)
 			* 1000) == TYPE_STATE_DEAD)
 		return (TYPE_STATE_DEAD);
 	philo_set_state(philo, TYPE_STATE_THINK);
+	philo_broadcast_state(philo, "is thinking", 0);
 	return (0);
 }
 

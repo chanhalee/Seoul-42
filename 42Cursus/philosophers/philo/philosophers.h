@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 14:12:28 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/28 14:51:20 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/28 21:50:08 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void		philo_broadcast_state(t_philosopher *philo, char *str, int silence);
 int			philo_terminate(t_philosopher *philo);
 int			check_philo_vital(t_philosopher *philo, int silence);
 int			bigbro_set_philo_done(t_philosopher *philo);
-int			check_vital_while_sleep(t_philosopher *philo, struct timeval start, long long sleep_time);
+int			check_vital_while_sleep(t_philosopher *philo,
+				struct timeval start, long long sleep_time);
 int			single_philo_action(t_philosopher *philo);
 
 #endif
