@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 22:30:48 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 19:06:00 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:40:39 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	philosopher_thread_create_sub(t_bigbro *bigbro)
 	counter = -1;
 	while (++counter < bigbro->number_of_philos)
 	{
+		philo_set_state(now, TYPE_STATE_DEAD);
 		philo_terminate(now);
 		now = now->next;
 	}

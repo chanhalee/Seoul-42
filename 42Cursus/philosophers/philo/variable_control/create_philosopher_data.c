@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 17:22:23 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 14:03:02 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:56:27 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	add_empty_philosopher_at_tail_sub(t_bigbro *bigbro,
 	ret->time_to_eat = bigbro->time_to_eat;
 	ret->time_to_sleep = bigbro->time_to_sleep;
 	ret->number_of_full = &(bigbro->number_of_full);
+	ret->number_of_philos = bigbro->number_of_philos;
 	if (bigbro->philosophers_head != NULL)
 		bigbro->philosophers_head->prev = ret;
 	else

@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 22:34:04 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 19:17:57 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:54:10 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	philo_take_fork(t_philosopher *philo, int count);
 void	philo_lose_fork(t_philosopher *philo, int count);
-int		check_vital_while_sleep(t_philosopher *philo,
-			struct timeval start, long long sleep_time);
 int		philosopher_thread_main_innerseq(t_philosopher *philo,
 			struct timeval tv);
 
@@ -24,9 +22,12 @@ int	philosopher_thread_main(t_philosopher *philo)
 	struct timeval	tv;
 	int				inner_ret;
 
-	check_vital_while_sleep(philo, philo->starting_time, 200);
-	if (philo->number % 2)
-		check_vital_while_sleep(philo, philo->starting_time, 100);
+	if (philo->number_of_philos == 1)
+		return (single_philo_action(philo));
+	if (philo->number % 2 == 0)
+		check_vital_while_sleep(philo, philo->starting_time, 1000);
+	else if (philo->number_of_philos % 2 == 1 && philo->number != philo->number_of_philos)
+		check_vital_while_sleep(philo, philo->starting_time, 2000);
 	while (philo_get_state(philo) != TYPE_STATE_DEAD)
 	{
 		if (check_philo_vital(philo, 0) == TYPE_STATE_DEAD)
@@ -53,6 +54,7 @@ int	philosopher_thread_main_innerseq(t_philosopher *philo, struct timeval tv)
 	if (philo_set_state(philo, TYPE_STATE_EAT) == -1)
 		if (check_philo_vital(philo, 1) == TYPE_STATE_DEAD)
 			return (TYPE_STATE_DEAD);
+	gettimeofday(&(philo->last_eat), NULL);
 	if (check_vital_while_sleep(philo, tv, philo->time_to_eat
 			* 1000) == TYPE_STATE_DEAD)
 		return (TYPE_STATE_DEAD);

@@ -5,6 +5,7 @@ SRCS	=	./bigbro_util.c \
 			./philosopher_thread_main.c \
 			./philosopher_thread_util.c \
 			./philosophers_main.c \
+			./single_philo_action.c \
 			./variable_control/clear_bigbro_data.c \
 			./variable_control/create_philosopher_data.c \
 			./variable_control/free_philosopher_data.c \
@@ -14,7 +15,7 @@ SRCS	=	./bigbro_util.c \
 			./utils/ft_strncmp.c \
 
 OBJS			= $(SRCS:.c=.o)
-CC				= cc
+CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Werror -Wextra
 

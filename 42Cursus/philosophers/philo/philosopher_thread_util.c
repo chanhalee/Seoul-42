@@ -6,7 +6,7 @@
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 20:10:18 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/27 19:02:54 by chanhale         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:41:42 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,12 @@ void	philo_broadcast_state(t_philosopher *philo, char *str, int silence)
 
 int	check_philo_vital(t_philosopher *philo, int silence)
 {
-	t_philosopher	*next;
-
 	if (silence || (philo_get_state(philo) != TYPE_STATE_DEAD
 			&& ft_get_time_gap(philo->last_eat) > (philo->time_to_die * 1000)))
 	{
 		philo_broadcast_state(philo, "died", silence);
 		pthread_mutex_lock(philo->permission_to_speak);
-		next = philo->next;
-		while (next != philo)
-		{
-			philo_set_state(next, TYPE_STATE_DEAD);
-			next = next->next;
-		}
-		philo_set_state(next, TYPE_STATE_DEAD);
+		philo_set_state(philo, TYPE_STATE_DEAD);
 		pthread_mutex_unlock(philo->permission_to_speak);
 		return (TYPE_STATE_DEAD);
 	}

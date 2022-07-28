@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers_main.c                                :+:      :+:    :+:   */
+/*   single_philo_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanhale <chanhale@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 16:19:06 by chanhale          #+#    #+#             */
-/*   Updated: 2022/07/28 14:55:05 by chanhale         ###   ########.fr       */
+/*   Created: 2022/07/28 14:43:54 by chanhale          #+#    #+#             */
+/*   Updated: 2022/07/28 14:57:00 by chanhale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philosophers.h"
 
-int	main(int argc, char **argv)
+int	single_philo_action(t_philosopher *philo)
 {
-	t_bigbro	bigbro;
+	struct timeval tv;
 
-	if (argc < 5 || argc > 6)
-		return (0);
-	if (init_bigbro_data(&bigbro, argv) == -1)
-		return (0);
-	philosopher_thread_create(&bigbro);
-	clear_bigbro_data(&bigbro);
-	return (0);
+	pthread_mutex_lock(philo->l_fork);
+	philo_broadcast_state(philo, "has taken a fork", 0);
+	gettimeofday(&tv, NULL);
+	check_vital_while_sleep(philo, tv, philo->time_to_die * 1000);
+	philo_broadcast_state(philo, "died", 0);
+	return (TYPE_STATE_DEAD);
 }
