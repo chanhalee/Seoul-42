@@ -4,6 +4,9 @@
 # include <iostream>
 # include <iomanip>
 
+using std::cout;
+using std::endl;
+
 class Contact
 {
 private:
@@ -14,11 +17,7 @@ private:
 	char darkest_secret[10];
 
 public:
-	const char *get_first_name();
-	const char *get_last_name();
-	const char *get_nick_name();
-	const char *get_phone_number();
-	const char *get_darkest_secret();
+	void print_list_form(int index) const;
 };
 
 #endif
