@@ -6,18 +6,21 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 class Contact
 {
 private:
-	char first_name[10];
-	char last_name[10];
-	char nick_name[10];
-	char phone_number[10];
-	char darkest_secret[10];
-
+	string firstName;
+	string lastName;
+	string nickname;
+	string phoneNumber;
+    string darkestSecret;
 public:
-	void print_list_form(int index) const;
+	Contact();
+	Contact(string info[]);
+	void printListForm(int index) const;
+	void printSingleForm() const;
 };
 
 #endif

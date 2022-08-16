@@ -1,8 +1,11 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME		=	megaphone
-SRCS		=	megaphone.cpp
+NAME		=	phoneBook
+SRCS		=	cpp/Contact.cpp \
+				cpp/main.cpp \
+				cpp/PhoneBook.cpp
 OBJS		=	$(SRCS:.cpp=.o)
+HEADER_FLAG = -I./header/
 
 FG_GREEN	=	\e[32m
 FG_LBLUE	=	\e[94m
@@ -11,7 +14,7 @@ NO_COLOR	=	\e[0m
 all		:	$(NAME)
 	
 %.o		:	%.cpp
-	@$(CXX) $(CXXFLAGS) -c -o $@ $<
+	@$(CXX) $(CXXFLAGS) -c -o $@ $< $(HEADER_FLAG)
 	@printf "$(NAME) is making...\n"
 
 $(NAME)	:	$(OBJS)
