@@ -1,7 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 NAME		=	megaphone
-SRCS		=	megaphone.cpp
+SRCS		=	cpp/megaphone.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 
 FG_GREEN	=	\e[32m

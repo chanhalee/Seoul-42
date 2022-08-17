@@ -1,9 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME		=	zombieHorde
-SRCS		=	cpp/main.cpp \
-				cpp/zombieHorde.cpp \
-				cpp/Zombie.cpp
+NAME		=	hiThisIsBrain
+SRCS		=	cpp/main.cpp 
 
 OBJS		=	$(SRCS:.cpp=.o)
 
@@ -14,7 +12,7 @@ NO_COLOR	=	\e[0m
 all		:	$(NAME)
 	
 %.o		:	%.cpp
-	@$(CXX) $(CXXFLAGS) -c -o $@ $<
+	@$(CXX) $(CXXFLAGS) -c -o $@ $< $(HEADER_FLAG)
 	@printf "$(NAME) is making...\n"
 
 $(NAME)	:	$(OBJS)

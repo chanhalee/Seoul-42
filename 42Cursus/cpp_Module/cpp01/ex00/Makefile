@@ -7,7 +7,6 @@ SRCS		=	cpp/main.cpp \
 				cpp/Zombie.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
-HEADER_FLAG = -I./header/
 
 FG_GREEN	=	\e[32m
 FG_LBLUE	=	\e[94m
@@ -16,7 +15,7 @@ NO_COLOR	=	\e[0m
 all		:	$(NAME)
 	
 %.o		:	%.cpp
-	@$(CXX) $(CXXFLAGS) -c -o $@ $< $(HEADER_FLAG)
+	@$(CXX) $(CXXFLAGS) -c -o $@ $<
 	@printf "$(NAME) is making...\n"
 
 $(NAME)	:	$(OBJS)

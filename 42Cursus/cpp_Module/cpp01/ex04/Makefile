@@ -1,9 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
-NAME		=	zombieHorde
-SRCS		=	cpp/main.cpp \
-				cpp/zombieHorde.cpp \
-				cpp/Zombie.cpp
+NAME		=	sedIsForLosers
+SRCS		=	cpp/main.cpp 
 
 OBJS		=	$(SRCS:.cpp=.o)
 
