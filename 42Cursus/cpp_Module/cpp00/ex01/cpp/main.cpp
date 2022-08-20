@@ -60,4 +60,5 @@ int main()
 		else if (input != "EXIT")
 			std::cout<<"Wrong Input!!"<<std::endl;
 	}
+	return (0);
 }

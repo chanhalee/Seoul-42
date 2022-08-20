@@ -70,7 +70,7 @@ float Fixed::toFloat() const
 
 ostream& operator <<(ostream& outputStream, const Fixed& F)
 {
-	cout << F.toFloat();
+	outputStream << F.toFloat();
 	return outputStream;
 }
 

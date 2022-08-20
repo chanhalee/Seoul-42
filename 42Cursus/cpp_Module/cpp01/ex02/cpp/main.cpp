@@ -19,4 +19,5 @@ int main(void)
 	std::cout<<"*strPtr: "<<*strPtr<<std::endl;
 	std::cout<<"The value pointed to by stringREF"<<std::endl;
 	std::cout<<"strRef: "<<strRef<<std::endl;
+	return (0);
 }

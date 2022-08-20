@@ -55,6 +55,6 @@ public:
 	void setRawBits(int const raw);
 };
 
-ostream& operator <<(ostream&, const Fixed&);
+ostream& operator <<(ostream& outputStream, const Fixed& F);
 
 #endif
