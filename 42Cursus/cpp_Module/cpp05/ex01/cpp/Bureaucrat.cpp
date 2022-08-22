@@ -9,11 +9,11 @@ Bureaucrat::Bureaucrat(string name, int grade):name(name), grade(grade)
 	cout<<"[Bureaucrat] "<<"Arguments constructor called."<<endl;
 	if (grade <= 1)
 	{
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	if (grade >= 150)
 	{
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat):name(bureaucrat.name), grade(bureaucrat.grade)
@@ -21,11 +21,11 @@ Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat):name(bureaucrat.name), grad
 	cout<<"[Bureaucrat] "<<"Copy constructor called."<<endl;
 	if (grade <= 1)
 	{
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	if (grade >= 150)
 	{
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 }
 Bureaucrat &Bureaucrat::operator =(const Bureaucrat &bureaucrat)
@@ -33,11 +33,11 @@ Bureaucrat &Bureaucrat::operator =(const Bureaucrat &bureaucrat)
 	cout<<"[Bureaucrat] "<<"Copy assignment operator called."<<endl;
 	if (grade <= 1)
 	{
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	if (grade >= 150)
 	{
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	const_cast<string &>(name) = bureaucrat.name;
 	grade = bureaucrat.grade;
@@ -49,11 +49,11 @@ Bureaucrat::~Bureaucrat()
 }
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "GradeTooHighException";
+	return "Bureaucrat::GradeTooHighException";
 }
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "GradeTooLowException";
+	return "Bureaucrat::GradeTooLowException";
 }
 string Bureaucrat::getName(void) const
 {
@@ -67,7 +67,7 @@ void Bureaucrat::promote()
 {
 	if (grade <= 1)
 	{
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	else
 	{
@@ -79,7 +79,7 @@ void Bureaucrat::demote()
 {
 	if (grade >= 150)
 	{
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	else
 	{
@@ -92,4 +92,13 @@ ostream &operator <<(ostream &os, const Bureaucrat &bureaucrat)
 {
 	os<<bureaucrat.getName()<<", bureaucrat grade "<<bureaucrat.getGrade()<<endl;
 	return (os);
+}
+void Bureaucrat::signForm(const Form &form) const
+{
+	if (form.getAuthorized())
+		cout<<name<<" couldn't sign "<<form.getName()<<" because "<<"It's already signed"<<endl;
+	else if (grade > form.getSignGrade())
+		cout<<name<<" couldn't sign "<<form.getName()<<" because "<<"bureaucrat grade is too LOW"<<endl;
+	else
+		cout<<name<<" signed "<<form.getName()<<endl;
 }
