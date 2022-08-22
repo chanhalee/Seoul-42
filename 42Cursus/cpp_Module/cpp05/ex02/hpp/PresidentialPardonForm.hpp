@@ -22,7 +22,7 @@ public:
 	PresidentialPardonForm(const PresidentialPardonForm &presidentialPardonForm);
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &presidentialPardonForm);
 	~PresidentialPardonForm();
-	int execute(Bureaucrat &executor);
+	void execute(const Bureaucrat &executor) const;
 
 };
 

@@ -1,10 +1,10 @@
 #include "../hpp/PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm():Form("PresidentialPardonForm", 145, 137), target("NoName")
+PresidentialPardonForm::PresidentialPardonForm():Form("PresidentialPardonForm", 25, 5), target("NoName")
 {
 	cout<<"[PresidentialPardonForm] "<<"Default constructor called."<<endl;
 }
-PresidentialPardonForm::PresidentialPardonForm(const string target):Form("PresidentialPardonForm", 145, 137), target(target)
+PresidentialPardonForm::PresidentialPardonForm(const string target):Form("PresidentialPardonForm", 25, 5), target(target)
 {
 	cout<<"[PresidentialPardonForm] "<<"Arguments constructor called."<<endl;
 }
@@ -15,25 +15,26 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &pre
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &presidentialPardonForm)
 {
 	cout<<"[PresidentialPardonForm] "<<"Copy assignment operator called."<<endl;
-	*this = presidentialPardonForm;
+	*(Form *)this = presidentialPardonForm;
 	target = presidentialPardonForm.target;
+	return (*this);
 }
 PresidentialPardonForm::~PresidentialPardonForm()
 {
 	cout<<"[PresidentialPardonForm] "<<"Destructor called."<<endl;
 }
-int PresidentialPardonForm::execute(Bureaucrat &executor)
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
-	if (!this->getAuthorized())
+	if (this->getAuthorized())
 	{
 		executor.executeForm(*this);
-		if (this->getExecuteGrade() < executor.getGrade())
+		if (this->getExecuteGrade() >=  executor.getGrade())
 		{
-			;
+			cout<<target<<" has been pardoned by Zaphod Beeblebrox"<<endl;
 		}
 		else
 			throw Form::GradeTooLowException();
 	}
 	else
-		cout<<"Can't Execute! "<<this->getName()<<" is Not Authorized!";
+		cout<<"Can't Execute! "<<this->getName()<<" is Not Authorized!"<<endl;
 }

@@ -2,11 +2,11 @@
 
 
 
-Form::Form():name("NoName"), signGrade(1), executeGrade(1), authorized(false)
+Form::Form():name("NoName"), authorized(false), signGrade(1), executeGrade(1)
 {
 	cout<<"[Form] "<<"Default constructor called."<<endl;
 }
-Form::Form(const Form &form):name(form.name), signGrade(form.signGrade), executeGrade(form.executeGrade), authorized(form.authorized)
+Form::Form(const Form &form):name(form.name), authorized(form.authorized), signGrade(form.signGrade), executeGrade(form.executeGrade)
 {
 	cout<<"[Form] "<<"Copy constructor called."<<endl;
 	if (signGrade < 1|| executeGrade < 1)
@@ -14,7 +14,7 @@ Form::Form(const Form &form):name(form.name), signGrade(form.signGrade), execute
 	else if (signGrade > 150 || executeGrade > 150)
 		throw Form::GradeTooLowException();
 }
-Form::Form(const string name, int signGrade, int executeGrade):name(name), signGrade(signGrade), executeGrade(executeGrade), authorized(false)
+Form::Form(const string name, int signGrade, int executeGrade):name(name), authorized(false), signGrade(signGrade), executeGrade(executeGrade)
 {
 	cout<<"[Form] "<<"Arguments constructor called."<<endl;
 	if (signGrade < 1|| executeGrade < 1)

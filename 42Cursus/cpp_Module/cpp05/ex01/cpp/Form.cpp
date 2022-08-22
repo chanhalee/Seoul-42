@@ -2,11 +2,11 @@
 
 
 
-Form::Form():name("NoName"), signGrade(1), executeGrade(1)
+Form::Form():name("NoName"), authorized(false), signGrade(1), executeGrade(1)
 {
 	cout<<"[Form] "<<"Default constructor called."<<endl;
 }
-Form::Form(const Form &form):name(form.name), signGrade(form.signGrade), executeGrade(form.executeGrade)
+Form::Form(const Form &form):name(form.name), authorized(form.authorized), signGrade(form.signGrade), executeGrade(form.executeGrade)
 {
 	if (signGrade < 1|| executeGrade < 1)
 		throw Form::GradeTooHighException();
@@ -14,7 +14,7 @@ Form::Form(const Form &form):name(form.name), signGrade(form.signGrade), execute
 		throw Form::GradeTooLowException();
 	cout<<"[Form] "<<"Copy constructor called."<<endl;
 }
-Form::Form(const string name, int signGrade, int executeGrade):name(name), signGrade(signGrade), executeGrade(executeGrade)
+Form::Form(const string name, int signGrade, int executeGrade):name(name), authorized(false), signGrade(signGrade), executeGrade(executeGrade)
 {
 	if (signGrade < 1|| executeGrade < 1)
 		throw Form::GradeTooHighException();
@@ -28,6 +28,7 @@ Form &Form::operator=(const Form &form)
 	const_cast<string &>(name) = form.name;
 	const_cast<int &>(signGrade) = form.signGrade;
 	const_cast<int &>(executeGrade) = form.executeGrade;
+	authorized = form.authorized;
 	if (signGrade < 1|| executeGrade < 1)
 		throw Form::GradeTooHighException();
 	else if (signGrade > 150 || executeGrade > 150)
