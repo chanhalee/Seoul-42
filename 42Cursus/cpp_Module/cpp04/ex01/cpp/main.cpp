@@ -34,15 +34,15 @@ int main()
 
 		dog1->setBrain("dog1");
 
-		cout << "\n\ndog1\n" << endl;
+		cout<<"\n\ndog1\n"<<endl;
 		dog1->printBrain();
-		cout << "\n\ndog2\n" << endl;
+		cout<<"\n\ndog2\n"<<endl;
 		dog2->printBrain();
 
 		*dog2 = *dog1;
-		cout << "\n\ndog1\n" << endl;
+		cout<<"\n\ndog1\n"<<endl;
 		dog1->printBrain();
-		cout << "\n\ndog2\n" << endl;
+		cout<<"\n\ndog2\n"<<endl;
 		dog2->printBrain();
 
 		delete dog1;

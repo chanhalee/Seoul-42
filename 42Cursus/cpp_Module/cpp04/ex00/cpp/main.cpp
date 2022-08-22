@@ -9,9 +9,9 @@ int main()
 		const Animal* dog = new Dog();
 		const Animal* cat = new Cat();
 
-		cout <<animal->getType() << " " << endl;
-		cout <<dog->getType() << " " << endl;
-		cout <<cat->getType() << " \n" << endl;
+		cout<<animal->getType()<<endl;
+		cout<<dog->getType()<<endl;
+		cout<<cat->getType()<<endl;
 		animal->makeSound();
 		dog->makeSound();
 		cat->makeSound();
@@ -24,8 +24,8 @@ int main()
 		const WrongAnimal* wrongAnimal = new WrongAnimal();
 		const WrongAnimal* wrongCat = new WrongCat();
 
-		cout <<wrongAnimal->getType() << " " << endl;
-		cout <<wrongCat->getType() << " \n" << endl;
+		cout<<wrongAnimal->getType()<<endl;
+		cout<<wrongCat->getType()<<endl;
 
 		wrongAnimal->makeSound();
 		wrongCat->makeSound();
