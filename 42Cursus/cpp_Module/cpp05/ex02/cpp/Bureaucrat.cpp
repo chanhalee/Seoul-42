@@ -102,3 +102,11 @@ void Bureaucrat::signForm(const Form &form) const
 	else
 		cout<<name<<" signed "<<form.getName()<<endl;
 }
+
+void Bureaucrat::executeForm(Form const &form)
+{
+	if (grade > form.getExecuteGrade())
+		cout<<name<<" couldn't execute "<<form.getName()<<" because "<<"bureaucrat grade is too LOW"<<endl;
+	else
+		cout<<name<<" executed "<<form.getName()<<endl;
+}

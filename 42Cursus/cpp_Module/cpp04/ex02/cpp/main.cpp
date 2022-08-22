@@ -5,15 +5,13 @@
 int main()
 {
 	{
-		std::cout << "========== Default ==========" << std::endl;
-	
-		//const Animal* j = new Animal();
 		const Animal* i = new Cat();
+		//const Animal* j = new Animal();
 
-		//delete j; //should not create a leak
 		i->makeSound();
 		delete i;
+		//delete j;
 	}
 	//while (1);
-	return 0;
+	return (0);
 }

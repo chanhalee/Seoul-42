@@ -37,6 +37,7 @@ public:
 	void promote(void);
 	void demote(void);
 	void signForm(const Form &form) const;
+	void executeForm(Form const &form);
 };
 ostream &operator <<(ostream &os, const Bureaucrat &bureaucrat);
 
