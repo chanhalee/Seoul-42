@@ -23,7 +23,7 @@ public:
 	Form(const Form &form);
 	Form(const string name, int signGrade, int executeGrade);
 	Form &operator=(const Form &form);
-	~Form();
+	virtual ~Form();
 	class GradeTooHighException : public std::exception
 	{
 		public:
