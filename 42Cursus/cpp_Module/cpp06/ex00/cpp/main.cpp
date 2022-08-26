@@ -77,10 +77,10 @@ int main(int argc, char **argv)
 	}
 	if (!nanFlag)
 	{
-		if (infFlag)
-			resI = static_cast<int>(DBL_MAX);
-		else if (inffFlag)
-			resI = static_cast<int>(FLT_MAX);
+		if (infFlag || inffFlag)
+		{
+			resI = INT_MAX;
+		}
 		else
 		{
 			try 
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
 		cout <<"Non displayable"<<endl;
 	}
 	cout <<"int: ";
-	if (nanFlag)
+	if (nanFlag || infFlag || inffFlag)
 	{
 		cout <<"impossible"<<endl;
 	}

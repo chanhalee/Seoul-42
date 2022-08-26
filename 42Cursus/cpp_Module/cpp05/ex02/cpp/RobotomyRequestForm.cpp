@@ -30,6 +30,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 		executor.executeForm(*this);
 		if (this->getExecuteGrade() >= executor.getGrade())
 		{
+			cout<<"some DRILLING NOISE!"<<endl;
 			std::srand(std::time(NULL));
 			if (std::rand() % 100 >= 50)
 				cout<<target<<" has been robotomized successfully!"<<endl;
