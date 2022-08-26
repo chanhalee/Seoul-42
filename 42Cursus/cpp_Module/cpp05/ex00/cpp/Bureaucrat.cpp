@@ -7,11 +7,11 @@ Bureaucrat::Bureaucrat():name("NoName"), grade(150)
 Bureaucrat::Bureaucrat(string name, int grade):name(name), grade(grade)
 {
 	cout<<"[Bureaucrat] "<<"Arguments constructor called."<<endl;
-	if (grade <= 1)
+	if (grade < 1)
 	{
 		throw GradeTooHighException();
 	}
-	if (grade >= 150)
+	if (grade > 150)
 	{
 		throw GradeTooLowException();
 	}
@@ -19,11 +19,11 @@ Bureaucrat::Bureaucrat(string name, int grade):name(name), grade(grade)
 Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat):name(bureaucrat.name), grade(bureaucrat.grade)
 {
 	cout<<"[Bureaucrat] "<<"Copy constructor called."<<endl;
-	if (grade <= 1)
+	if (grade < 1)
 	{
 		throw GradeTooHighException();
 	}
-	if (grade >= 150)
+	if (grade > 150)
 	{
 		throw GradeTooLowException();
 	}
@@ -31,11 +31,11 @@ Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat):name(bureaucrat.name), grad
 Bureaucrat &Bureaucrat::operator =(const Bureaucrat &bureaucrat)
 {
 	cout<<"[Bureaucrat] "<<"Copy assignment operator called."<<endl;
-	if (grade <= 1)
+	if (grade < 1)
 	{
 		throw GradeTooHighException();
 	}
-	if (grade >= 150)
+	if (grade > 150)
 	{
 		throw GradeTooLowException();
 	}
