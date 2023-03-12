@@ -15,20 +15,18 @@ RPN::RPN(const string argv)
 {
 	cout<<"Argument constructor RPN"<<endl;
 	string tmpStr(argv);
-	string errStr("consecutive spaces are not allowed");
-	while(true)
+	while(tmpStr.length() > 0)
 	{
-		size_t pos = tmpStr.rfind(" ", string::npos);
-		if (pos == string::npos)
-			break;
-		if (pos+1 == tmpStr.length())
-			throw ErrException();
-		string tok = tmpStr.substr(pos + 1);
-		data.push(tok);
+		size_t pos = tmpStr.length() - 1;
+		if (tmpStr.rfind(' ', string::npos) != pos || tmpStr.rfind(' ', string::npos) == string::npos)
+		{
+			string tok = tmpStr.substr(pos);
+			data.push(tok);
+		}
 		tmpStr.erase(pos, string::npos);
 	}
-	string tok = tmpStr.substr(0);
-	data.push(tok);
+	if (data.size() < 1)
+		throw ErrException();
 }
 
 RPN& RPN::operator=(const RPN &rpn)
@@ -99,7 +97,7 @@ float RPN::calculate()
 	}
 	if (operands.size() >= 2)
 		throw ErrException();
-	float result = operands.top();
+	result = operands.top();
 	operands.pop();
 	return result;
 }
@@ -107,7 +105,6 @@ float RPN::calculate()
 void RPN::validateNumber(string num)
 {
 	bool first = true;
-	bool firstPoint = true;
 	size_t it = 0;
 	const char *str(num.c_str());
 	while(it < num.size())
@@ -124,17 +121,11 @@ void RPN::validateNumber(string num)
 			it++;
 			continue;
 		}
-		if (firstPoint && str[it] <= '.' )
-		{
-			firstPoint = false;
-			it++;
-			continue;
-		}
 		throw ErrException();
 	}
 }
 
 const char *RPN::ErrException::what() const throw()
 {
-	return "error";
+	return "Error";
 }
