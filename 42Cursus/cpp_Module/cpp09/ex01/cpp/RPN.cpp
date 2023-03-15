@@ -116,7 +116,7 @@ void RPN::validateNumber(string num)
 			continue;
 		}
 		first = false;
-		if (str[it] >= '0' || str[it] <= '9')
+		if (str[it] >= '0' && str[it] <= '9')
 		{
 			it++;
 			continue;

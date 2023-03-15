@@ -8,7 +8,7 @@ int main(void)
 		cout<<b1;
 		Bureaucrat b2("B2", 148);
 		cout<<b2;
-		Bureaucrat b3("B3", 3);
+		Bureaucrat b3("B3", 1);
 		cout<<b3;
 		b2.promote();
 		b2.demote();
